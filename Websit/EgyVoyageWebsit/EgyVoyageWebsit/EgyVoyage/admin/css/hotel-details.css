@@ -1,0 +1,315 @@
+
+.second-nav {
+  border-bottom: 1px solid #ccc;
+  background-color: white
+}
+.second-nav ul li.active{
+  border-bottom: 2px solid #1da1f2;
+}
+.second-nav ul li:hover{
+  border-bottom: 2px solid #1da1f2;
+}
+
+.detail h1{
+  font-family: var(--primary-font);
+}
+.detail .f li:not(:first-child){
+  margin-left: 100px;
+}
+.detail h1{
+  font-family: var(--primary-font);
+}
+.detail .big {
+  width: 100%;
+  height: 415px;
+}
+.detail .text .rate {
+  font-size: 18px;
+}
+.detail .text .rate span{
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+.detail .text .rate svg {
+  color: orange;
+}
+.detail .text ul li  {
+  color: #777;
+}
+
+/* Start Detail Section */
+.detail-section {
+  display: flex;
+}
+.detail-section .part-1 {
+  width: 70%;
+}
+.detail-section .part-2 {
+  width: 30%;
+}
+.detail-section h2 {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 25px;
+  margin: 35px 0;
+}
+.detail-section p{
+  line-height: 2;
+  font-size: 17.5px;
+  color: #777;
+}
+.detail-section h3{
+  font-size: 17.5px;
+}
+.detail-section .include, 
+.detail-section .exclude {
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.detail-section .exclude {
+  border-bottom: 2px solid #eee;
+  margin-right: 30px;
+}
+.detail-section .second {
+  border-bottom: 2px solid #eee;
+}
+/* end Detail Section */
+.detail-section .booking-form,
+.detail-section .confidence {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.detail-section .booking-form .text p{
+  color: black;
+  font-weight: bold;
+}
+.detail-section .booking-form .text p span{
+font-size: 26px;
+}
+.detail-section .booking-form h4{
+font-size: 15px;
+width: 97px;
+padding-bottom: 10px;
+border-bottom: 2px solid #1da1f2;
+}
+.detail-section .booking-form .inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.detail-section .booking-form .inner a{
+  color: white;
+}
+.detail-section .booking-form input,
+.detail-section .booking-form select {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+}
+.detail-section .booking-form select {
+  cursor: pointer;
+}
+.detail-section .booking-form input:focus,
+.detail-section .booking-form select:focus{
+  outline: none;
+}
+.detail-section .inner svg {
+  color: #1da1f2;
+}
+.detail-section .booking-form .inner button {
+  width: 80%;
+  padding: 15px;
+  text-transform: uppercase;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  position: relative;
+  right: -16px;
+  border-radius: 3px
+}
+.detail-section .booking-form a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.detail-section .confidence h3 {
+  font-family: var(--primary-font);
+  font-weight:  bold;
+  font-size: 22px;
+}
+.detail-section .confidence li {
+  font-size: 16px;
+  color: #777;
+}
+.detail-section .confidence li svg{
+  color: #1da1f2;
+}
+.detail-section .need-help {
+  border: 2px solid black;
+  border-radius: 7px;
+}
+.detail-section .need-help h3 {
+  font-weight: bold;
+  font-family: var(--primary-font);
+  font-size: 25px;
+}
+
+
+
+/* Start Itenrary */
+.itenrary h2 {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  font-size: 25px;
+  padding: 15px 0;
+}
+.itenrary .text {
+  width: 70%;
+  border-bottom: 1px solid #eee;
+}
+.itenrary .text h4{
+  font-weight: 600;
+  font-size: 18px;
+  color: #1da1f2;
+  padding: 15px 0;
+}
+.itenrary .text p{
+  line-height: 2;
+  color: #777;
+}
+/* End Itenrary */
+
+
+/* Start Map */
+.primary-heading {
+  font-family: var(--primary-font);
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.map .mp {
+  border-top: 50px solid #4d6a79;
+  width: 740px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #eee;
+}
+.map iframe {
+  width: 100%;
+}
+/* End Map */
+
+
+/* Start Room  */
+.room-prop{
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  padding: 40px 60px;
+}
+.room .text ul li span{
+  color: #777;
+}
+.room .amenities {
+position: relative;
+}
+.room .amenities::after {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--primary-color);
+  bottom: 0;
+  width: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.room .amenities img  {
+  width: 400px;
+  margin-right: 50px;
+  padding-bottom: 35px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.room .amenities ul {
+  flex-wrap: wrap;
+}
+.room .amenities ul li {
+  border: 1px solid #eee;
+  color: #777;
+  padding: 15px 30px 15px 10px ;
+  margin:  0 10px 20px;
+  display: flex;
+  width: 220px;
+  align-items: center;
+  justify-content: start;
+  border-radius: 5px;
+}
+.room .amenities ul li:hover {
+  border: none;
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  transform: scale(1.5);
+  transform: translateY(-5px);
+  transition: .4s;
+}
+.room .amenities ul li svg{
+  margin-left: 7px;
+}
+.room .submit{
+  position: relative;
+  margin-top: 20px;
+}
+.room button{
+  position: relative;
+  background-color: transparent;
+  border: none;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 0 3px 0;
+}
+.room button::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #777;
+  width: 30px;
+  bottom: 0;
+  left: 0;
+}
+.room .room-price {
+  color: #1da1f2;
+  font-weight: bold;
+}
+.room .submit:hover button::after {
+  border-color: #5c98f2;
+  width: 100%;
+  transition: .5s;
+}
+/* End Room  */
+
+/* Start FAQ */
+
+.faq .question {
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 60%;
+  padding: 30px;
+}
+.faq .question h3{
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--primary-font);
+  letter-spacing: -1px;
+}
+.faq .question p{
+  line-height: 1.6;
+  font-size: 14px;
+  color: #777;
+}
+/* End FAQ */

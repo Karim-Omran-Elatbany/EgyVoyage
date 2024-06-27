@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+
+<div style="width: 40%;" id="successAlart"></div>
+<!-- Start Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/destination.html">Destination</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/all-hotels.html">Our Hotels</a>
+      </li>
+    </ul>
+    <!-- <a class="btn btn-primary opacity-75 px-3" id="lgn" href="#" role="button">Login</a> -->
+    <div id="login-overlay">
+      <div class="login-container p-4">
+        <h1>Login<span class="closeBtn">x</span></h1>
+        <form class="" action="/login" method="post">
+          <div class="d-flex justify-content-between mt-5">
+            <div class="name-pass d-flex">
+              <label for="username">Email</label>
+              <input type="text" id="username" name="username" placeholder=" Email">
+            </div>
+            <div class="name-pass d-flex">
+              <label for="password">Password</label>
+              <input type="password" id="passwordd" name="password" placeholder="Password">
+            </div>
+          </div>
+          <button id="signin" type="submit">Sign In</button>
+          <div class="clk-a d-flex flex-column">
+            <a class="first-a" href="#">Forgot Password?</a>
+            <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+            <a class="last-a" href="/register.html">Create an Account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: none;" class="user-name">
+    <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+    <span id="user-name-text"></span>
+    <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+    <ul>
+      <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+      <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+      <li><a href="#">Signout</a></li>
+    </ul>
+  </div>
+
+</nav>
+<!-- End Navbar -->
+
+<div class="main-register pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Register</h1>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Start Register -->
+<div class="reigster fs-6">
+  <div class="container">
+    <p class="fs-6 text-black-50 my-5">After creating an account, you'll be able to track your payment status, track the
+      confirmation and you can also
+      rate the tour after you finished the tour.</p>
+    <form action="#">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="first-name">First Name*</label>
+          <input type="text" id="first-name" name="first-name" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="last-name">Last Name*</label>
+          <input type="text" id="last-name" name="last-name" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="ssn">Ssn*</label>
+          <input  id="ssn" name="ssn" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="password">Password*</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="confirm-password">Confirm Password*</label>
+          <input type="password" id="confirm-password" name="confirm-password" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="gender">Gender*</label>
+          <input type="text" id="gender" name="gender" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="birth-date">Birth Date*</label>
+          <input type="datetime" id="birth-date" name="birth-date" placeholder="yyyy-mm-dd" required>
+        </div>
+
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="phone">Phone*</label>
+          <input type="number" id="phone" name="phone" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column country">
+          <label for="country">Country*</label>
+          <input id="country" name="country" required>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center align-items-center mb-3 box">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms" class="ms-2 fs-6 text-black-50">* Creating an account means you're okay with our Terms of
+            Service and Privacy Statement.</label>
+        </div>
+        <button id="register-btn" type="submit">SIGN UP</button>
+      </div>
+    </form>
+    <div class="exist text-center my-5">
+      <h4>Alerady A Member?</h4>
+      <a href="#" id="lgn">LOGIN</a>
+    </div>
+  </div>
+</div>
+<!-- End Register -->
+
+
+
+
+
+<!-- Start Footer -->
+<div class="footer pt-5 pb-5 text-md-start text-center text-white-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+        <img src="/imgs/logo.png" alt="">
+        <p class="mt-4">
+          In Egypt, the walking rhyme,
+          the charming sentence,
+          the rebellious article,
+          and the fragrant idea
+        </p>
+        <div class="copyright mt-5">
+          Created By <span>Saqr</span>
+          <div>&copy; 2024 - <span>BFCAI</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5 mb-lg-0">
+        <div class="links">
+          <h5 class="text-light mb-2">Links</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Home</li>
+            <li class="mb-2">Our Services</li>
+            <li class="mb-2">Portfolio</li>
+            <li class="mb-2">Testimonials</li>
+            <li class="mb-2">Support</li>
+            <li class="mb-2">Terms and Condition</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5">
+        <div class="links">
+          <h5 class="text-light mb-2">About Us</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Sign in</li>
+            <li class="mb-2">Rsgister</li>
+            <li class="mb-2">About Us</li>
+            <li class="mb-2">Blog</li>
+            <li class="mb-2">Contact Us</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="contact">
+          <h5 class="text-light mb-2">Contact Us</h5>
+          <p class="mt-3 mb-5 lh-lg">
+            Get in touch with us via mail phone.We are waiting for your call or message
+          </p>
+          <a class="btn main-btn rounded-pill w-100" href="#">graphberry@gmail.com</a>
+          <ul class="d-flex mt-5 gap-5 list-unstyled justify-content-center">
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-facebook facebook rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-twitter twitter rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-linkedin linkedin rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-youtube youtube rounded-circle p-2"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar nav-footer navbar-expand-lg p-3">
+  <div class="container foot">
+    <ul class="navbar-nav me-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+  </div>
+</nav>
+<!-- End Footer -->
+
+<script>
+
+
+  const reg = document.getElementById('register-btn');
+  reg.addEventListener('click', function (event) {
+    event.preventDefault();
+    let Fname = document.getElementById('first-name').value
+    let Lname = document.getElementById('last-name').value
+    let gender = document.getElementById('gender').value
+    let phone = document.getElementById('phone').value
+    let country = document.getElementById('country').value
+    let Ssn = document.getElementById('ssn').value
+    let BD = document.getElementById('birth-date').value
+    let Email = document.getElementById('email').value
+    let password = document.getElementById('password').value
+
+    axios.post('http://egyvoyage.somee.com/api/User',
+      JSON.stringify(
+        {
+          "fName": Fname,
+          "lName": Lname,
+          "gender": gender,
+          "phoneNumber": phone,
+          "nationality": country,
+          "ssn": Ssn,
+          "birthdate": BD,
+          "email": Email,
+          "password": password,
+        }
+      )
+      , {
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+      .then((res) => {
+        console.log(res)
+        let user = res.data.user
+        localStorage.setItem("code", res.data.code);
+        localStorage.setItem("fname", user.fName);
+        localStorage.setItem("lname", user.lName);
+        localStorage.setItem("email", user.email);
+        localStorage.setItem("phone", user.phoneNumber);
+        localStorage.setItem("country", user.nationality);
+        localStorage.setItem("password", user.password);
+        localStorage.setItem("birthdate", user.birthdate);
+        localStorage.setItem("ssn", user.ssn);
+        localStorage.setItem("gender", user.gender);
+
+        alert("Registration Done")
+        setTimeout(() => {
+          window.location = "/index.html";
+        }, "600");
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+  });
+
+
+
+  let loginBtn = document.getElementById('signin')
+  loginBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    let email = document.getElementById('username').value
+    let password = document.getElementById('passwordd').value
+    fetch(`http://egyvoyage.somee.com/api/User/signin?email=${email}&password=${password}`)
+      .then((res) => res.json())
+      .then((response) => {
+        console.log(response)
+        if (response == true) {
+          document.getElementById("login-overlay").style.display = "none"
+          document.getElementById("lgn").style.display = "none"
+          window.location = "/index.html"
+          fetch(`http://egyvoyage.somee.com/api/User  `)
+            .then((res) => res.json())
+            .then((response) => {
+              console.log(response)
+              let user = response
+              let email = localStorage.getItem("email")
+              for (let i = 0; i < user.length; i++) {
+                if (user[i].email == email) {
+                  localStorage.setItem("fname", user[i].fName);
+                  localStorage.setItem("lname", user[i].lName);
+                  // localStorage.setItem("phone",user.phoneNumber);
+                  localStorage.setItem("country", user[i].nationality);
+                  localStorage.setItem("birthdate", user[i].birthdate);
+                  localStorage.setItem("gender", user[i].gender)
+                }
+              }
+
+            })
+            .catch(error => {
+              console.log(error)
+            })
+        }
+
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  })
+
+</script>
+
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+
+<body>
+</body>
+
+</html>

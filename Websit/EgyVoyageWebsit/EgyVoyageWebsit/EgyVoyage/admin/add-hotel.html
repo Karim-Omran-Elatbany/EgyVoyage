@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage - Add Hotel</title>
+  <link rel="stylesheet" href="/admin/css/all.min.css">
+  <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+  <link rel="stylesheet" href="7admin/css/home.css">
+  <link rel="stylesheet" href="/admin/css/register.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <style>
+      #addBtn{
+          letter-spacing: 0;
+          background: #409422;
+          transition: 0.5s;
+          
+      }
+      #addBtn:hover{
+          letter-spacing: 1px;
+          background: #2a7210; 
+      }
+      #a{
+          margin-top: 17px;
+          letter-spacing: 0;
+          background: rgb(63, 158, 213);
+          transition: 0.5s;
+          margin-bottom: 20px;
+      }
+      #a:hover{
+          letter-spacing: 1px;
+          background: rgb(34, 123, 174);
+      }
+    </style>
+</head>
+<body>
+
+<!-- Success Alert -->
+<div id="alert" style="width: 40%; margin-left: 30%;"></div>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link p-3 active" aria-current="page" href="add-hotel.html">Add Hotel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="all-hotels.html">All Hotels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="all-places.html">All Places</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="add-place.html">Add Place</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="Analyze.html">Hotel Analytics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="/admin/Hotel Analyze.html">Feedback Analytics</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Section -->
+<div class="main-register pt-5 pb-5">
+  <div class="container">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Add Hotel</h1>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Hotel Form Section -->
+<div class="register addHotel fs-6">
+  <div class="overlay"></div>
+  <div class="container">
+    <form id="addHotelForm">
+      <div class="row pt-5 mt-5">
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="nameOfHotel">Name*</label>
+          <input type="text" id="nameOfHotel" name="nameOfHotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="descOfHotel">Description*</label>
+          <input type="text" id="descOfHotel" name="descOfHotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="locationOfhotel">Location*</label>
+          <input type="text" id="locationOfhotel" name="locationOfhotel" required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="ratingOfhotel">Rating*</label>
+          <input type="text" id="ratingOfhotel" name="ratingOfhotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="cordinateOfhotel">Coordinate*</label>
+          <input type="text" id="cordinateOfhotel" name="cordinateOfhotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="mapOfhotel">Map Location*</label>
+          <input type="text" id="mapOfhotel" name="mapOfhotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="firstOfhotel">First Day Trip*</label>
+          <input type="text" id="firstOfhotel" name="firstOfhotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="secondOfhotel">Second Day Trip*</label>
+          <input type="text" id="secondOfhotel" name="secondOfhotel"  required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="thirdOfhotel">Third Day Trip*</label>
+          <input type="text" id="thirdOfhotel" name="thirdOfhotel" required>
+          <div class="validation-message"></div>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="img">Select Image:</label>
+          <input type="file" id="img" name="img" accept="image/*" required>
+          <div class="validation-message"></div>
+        </div>
+
+        <div class="add-button text-center pt-5 d-flex align-items-center justify-content-center">
+          <input class="me-5" type="submit" id="addBtn" value="Add Hotel">
+          <a id="a" href="/admin/all-hotels.html">Show All Hotels</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="js/add-hotel.js"></script>
+
+
+</body>
+</html

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/user-dashboard/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/destination.html">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/all-hotels.html">Our Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary opacity-75 px-3" id="lgn" href="#" role="button">Login</a>
+      <div id="login-overlay">
+          <div class="login-container p-4">
+              <h1>Login<span class="closeBtn">x</span></h1>
+              <form action="/login" method="post">
+                  <div class="d-flex justify-content-between mt-5 lgn-display">
+                      <div class="name-pass d-flex">
+                          <label for="username">Username or Email</label>
+                          <input type="text" id="username" name="username" placeholder="Username or Email">
+                      </div>
+                      <div class="name-pass d-flex">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password">
+                      </div>
+                  </div>
+                  <button id="signin" type="submit">Sign In</button>
+                  <div class="clk-a d-flex flex-column">
+                      <a style="cursor: pointer;" class="first-a" id="forgetPassword" >Forgot Password?</a>
+                      <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+                      <a class="last-a" href="/register.html">Create an Account</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <div id="forgot-password-overlay" style="display: none;">
+      <div class="forgot-password-container p-4">
+          <h1>Forgot Password<span class="closeBtn">x</span></h1>
+          <hr>
+          <form action="/forgot-password" method="post">
+              <div class="d-flex justify-content-between mt-5">
+                  <div class="email-input d-flex justify-content-between align-items-center">
+                      <label for="forgot-email">Email :</label>
+                      <input type="email" id="forgot-email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <button id="send-reset-link" type="submit">Continue</button>
+          </form>
+      </div>
+  </div>
+  
+
+
+<div id="verify-code-overlay" style="display: none;">
+  <div class="verify-code-container p-4">
+    <h1>Verify Code<span class="closeBtn">x</span></h1>
+    <hr>
+    <form action="/verify-code" method="post">
+      <div class="d-flex justify-content-between mt-5">
+        <div class="code-input d-flex">
+          <label for="verify-code">Code</label>
+          <input type="text" id="verify-code" name="code" placeholder="Verification Code">
+        </div>
+      </div>
+      <button id="verify-code-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+<div style="display: none;" class="user-name user-info">
+  <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+  <span id="user-name-text"></span>
+  <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+  <ul>
+    <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+    <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+    <li><a id="signout" href="#">Signout</a></li>
+  </ul>
+</div>
+  </nav>
+  <!-- End Navbar -->
+
+
+<!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+
+
+  <!-- Start Landing -->
+  <div class="landing pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-lg-6 pt-4">
+          <div class="introduction-text">
+            <p>Book With Us!</p>
+            <h1>Find Next Place To <span>Visit</span></h1>
+            <h5 class="pt-4">Discover amzaing places at exclusive deals.Eat, Shop, Visit interesting places around the
+              world.</h5>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 pt-4">
+          <div class="blogOne rounded position-relative overflow-hidden">
+            <img class="rounded d-none d-lg-block" src="/imgs/nature-and-adventure.jpg" alt="">
+          </div>
+        </div>
+      </div>
+
+      <from class="details d-flex overflow-hidden">
+        <div class="one d-flex flex-column">
+          <label for="destination">Destination</label>
+          <select class="desti" name="destination" id="destination">
+            <option value="-">-</option>
+            <option value="cairo">Cairo</option>
+            <option value="alexandria">Alexandria</option>
+            <option value="giza">Giza</option>
+            <option value="shubra">Shubra El-Kheima</option>
+            <option value="port_said">Port Said</option>
+            <option value="suez">Suez</option>
+            <option value="luxor">Luxor</option>
+            <option value="mansoura">Mansoura</option>
+            <option value="tanta">Tanta</option>
+            <option value="asyut">Asyut</option>
+            <option value="islamlia">Ismailia</option>
+            <option value="fayoum">Fayoum</option>
+            <option value="zagazig">Zagazig</option>
+            <option value="damietta">Damietta</option>
+            <option value="aswan">Aswan</option>
+            <option value="minya">Minya</option>
+            <option value="beni_suef">Beni Suef</option>
+            <option value="qena">Qena</option>
+            <option value="sohag">Sohag</option>
+            <option value="hurghada">Hurghada</option>
+            <option value="6th_october">6th of October City</option>
+            <option value="sharm_el_sheikh">Sharm El-Sheikh</option>
+            <option value="banha">Banha</option>
+            <option value="kafr_el_sheikh">Kafr El-Sheikh</option>
+            <option value="arish">Arish</option>
+            <option value="mallawi">Mallawi</option>
+            <option value="10th_of_ramadan_city">10th of Ramadan City</option>
+            <option value="bilbais">Bilbais</option>
+            <option value="matruh">Marsa Matruh</option>
+            <option value="idfu">Edfu</option>
+            <option value="el_kharga">El Kharga</option>
+            <option value="ras_el_bar">Ras El Bar</option>
+            <option value="belqas">Belqas</option>
+            <option value="madinat_sittah_u">Madinat Sittah Uktubar</option>
+            <option value="cairo_al_fustat">Cairo Al-Fustat</option>
+            <option value="helwan">Helwan</option>
+            <option value="nasr_city">Nasr City</option>
+            <option value="manshiyat_naser">Manshiyat Naser</option>
+            <option value="new_cairo">New Cairo</option>
+            <option value="15th_of_may_city">15th of May City</option>
+          </select>
+        </div>
+        <div class="one d-flex flex-column">
+          <label for="start">Date of Arrival</label>
+          <input id="start" type="date" name="start">
+        </div>
+        <div class="one d-flex flex-column">
+          <label for="end">Departure time</label>
+          <input id="end" type="date" name="end">
+        </div>
+        <div class="last overflow-hidden text-center">
+          <button type="submit" id="searchBtn"
+            class="search d-flex flex-column justify-content-center align-items-center"><i
+              class="fa fa-search mb-3"></i>Search now</button>
+        </div>
+      </from>
+
+    </div>
+  </div>
+  <!-- End Landing -->
+
+
+
+
+  <!-- Start Blog -->
+  <div class="blog">
+    <div class="container">
+      <h4>See Egypt in a Variety of Ways</h4>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 pt-4">
+          <div class="blogOne rounded position-relative overflow-hidden">
+            <div class="overlay"></div>
+            <a href="#CultureandHeritage"> <img class="img-fluid rounded" src="/imgs/culture-and-heritage.jpg" alt="">
+            </a>
+            <div class="text">
+              <h4 class="ps-3 text-light">Culture and Heritage</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pt-4">
+          <div class="blogOne rounded position-relative overflow-hidden">
+            <div class="overlay"></div>
+            <a href="#SunandSea"><img class="img-fluid rounded" src="/imgs/sun-and-sea.jpg" alt=""></a>
+            <div class="text">
+              <h4 class="ps-3 text-light">Sun and Sea</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pt-4">
+          <div class="blogOne rounded position-relative overflow-hidden">
+            <div class="overlay"></div>
+            <a href="#NatureandAdventure"><img class="img-fluid rounded" src="/imgs/nature-and-adventure.jpg" alt="">
+            </a>
+            <div class="text">
+              <h4 class="ps-3 text-light">Nature and Adventure</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Blog -->
+
+<div class="CultureandHeritage pt-5 pb-5" id="CultureandHeritage">
+  <div class="container">
+    <h3 class="mainHead">Culture and Heritage</h3>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="CultureImage">
+          <img class="img-fluid rounded" src="/imgs/c1.jpg" alt="">
+          <img class="img-fluid rounded" src="/imgs/c2.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-6 col-sm-12">
+        <div class="CultureText">
+          <p>Ancient Egyptian Civilization: Egypt is renowned for its ancient civilization, which produced iconic landmarks such as the Pyramids of Giza, the Sphinx, and temples along the Nile River. The ancient Egyptians made significant contributions to architecture, art, literature, and science.</p>
+          <p>Islamic Influence: Egypt's culture was profoundly shaped by Islamic civilization, especially after the Arab conquest in the 7th century. Cairo, the capital, is home to mosques, madrassas (schools), and architectural marvels like the Citadel and Al-Azhar Mosque, one of the oldest universities in the world.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="SunandSea mt-5 pt-5 pb-5" id="SunandSea">
+  <div class="container">
+    <h3 class="mainHead">Sun and Sea</h3>
+    <div class="row">
+      <div class="col-lg-8 col-md-6 col-sm-12">
+        <div class="CultureText">
+          <p>Sharm El Sheikh: Known for its vibrant nightlife, luxury resorts, and beautiful beaches, Sharm El Sheikh is a major tourist destination. It offers a wide range of activities, including diving, snorkeling, and water sports.</p>
+          <p>Hurghada: Another top destination on the Red Sea, Hurghada is famous for its stunning coral reefs and clear waters. It’s a hotspot for diving and snorkeling, with numerous diving centers catering to both beginners and experienced divers.</p>
+          <p>Dahab: This laid-back town is perfect for those seeking a more relaxed atmosphere. Dahab is known for its excellent diving spots, including the famous Blue Hole, and windsurfing conditions.</p>
+          <p> Alexandria:
+            Known as the "Pearl of the Mediterranean," Alexandria is Egypt’s main Mediterranean port city. It offers a mix of
+            cultural heritage, beautiful beaches, and a pleasant climate. Key attractions include the Bibliotheca Alexandrina,
+            Montaza Palace, and the historic catacombs.
+            North Coast (Sahel):</p>
+            <p>The North Coast, or Sahel, stretches from Alexandria to the Libyan border. This region is famous for its pristine
+              beaches and clear waters. In the summer, it becomes a popular retreat for Egyptians and tourists alike, with numerous
+              resorts and private villas.
+            </p>
+            <p>El Alamein: Known for its historical significance during World War II, El Alamein also boasts beautiful beaches and a
+              number of luxury resorts. It offers a combination of history and relaxation.
+            </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="CultureImage">
+          <img class="img-fluid rounded" src="/imgs/s2.jpeg" alt="">
+          <img class="img-fluid rounded" src="/imgs/s1.jpeg" alt="">
+          <img class="img-fluid rounded" src="/imgs/s3.jpeg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="NatureandAdventure mt-5 pt-5 pb-5" id="NatureandAdventure">
+  <div class="container">
+    <h3 class="mainHead">Nature and Adventure</h3>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="CultureImage">
+          <img class="img-fluid rounded" src="/imgs/n1.jpeg" alt="">
+          <img class="img-fluid rounded" src="/imgs/n2.jpg" alt="">
+          <img class="img-fluid rounded" src="/imgs/n3.jpg" alt="">
+          <img class="img-fluid rounded" src="/imgs/n4.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-6 col-sm-12">
+        <div class="CultureText">
+          <p>
+          <p><strong>Siwa Oasis:</strong> Known for its unique natural beauty, Siwa features salt lakes and fresh water springs.
+            Visitors can explore the Mountain of the Dead, the ancient Shali Fortress, and enjoy desert safaris.</p>
+          <p><strong>Kharga Oasis:</strong> Famous for its Pharaonic and Roman ruins and extensive date palm groves.</p>
+          </p>
+          <p>
+          <p><strong>White Desert:</strong>This area is famous for its surreal landscapes, with chalk rock formations shaped by
+            wind erosion into stunning and unusual shapes.</p>
+          <p><strong>Mount Sinai:</strong>A site of significant religious and historical importance. Visitors often hike the
+            mountain at night to reach the summit by sunrise, offering a unique spiritual and natural experience.</p>
+          </p>
+          <p>
+          <p><strong>Ras Mohammed National Park:</strong>Located in South Sinai, this is one of the world's top marine reserves,
+            known for its rich biodiversity including coral reefs, fish, and bird species.</p>
+          <p><strong>Wadi El Gemal in Marsa Alam:</strong> Known for its sand dunes and unique desert landscapes, where visitors
+            can see wild camels and rare desert plants. It's a great spot for camping and desert safaris.</p>
+          </p>
+          <p>
+          <p><strong>Diving and Snorkeling:</strong> Locations like Sharm El Sheikh, Hurghada, and Dahab are renowned for some of
+            the best diving spots in the world, featuring vibrant coral reefs and diverse marine life.</p>
+          <p><strong>Mountain Climbing:</strong>Adventure enthusiasts can climb the Red Sea Mountains or the mountains of St.
+            Catherine, the latter offering a challenging ascent to over 2,600 meters.</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Start Footer -->
+  <nav class="navbar nav-footer navbar-expand-lg p-3">
+    <div class="container foot">
+      <ul class="navbar-nav me-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+      <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+    </div>
+  </nav>
+  <!-- End Footer -->
+
+
+  <script>
+  const startDate = new Date().toISOString().split('T')[0];
+  console.log(startDate );
+  var toDay = document.getElementById('start');
+  toDay.setAttribute('min', startDate);
+  toDay.value = startDate;
+  
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  var day = String(tomorrow.getDate()).padStart(2, '0');
+  var month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+  var year = tomorrow.getFullYear();
+  var tomorrowDate = year + '-' + month + '-' + day;
+  console.log(tomorrowDate)
+  var tomorrowDay = document.getElementById('end');
+  tomorrowDay.setAttribute('min', startDate);
+  tomorrowDay.value = tomorrowDate;
+
+  var desti = document.getElementById('destination');
+  desti.value = "luxor";
+</script>
+
+  <script src="/js/all.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/searched-hotels.js"></script>
+  <script src="/js/egyVoyage.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="/js/alert.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,90 @@
+:root {
+  --main-color: #2196f3;
+  --main-color-alt: #1787e0;
+  --main-transition: 0.3s;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+  --section-background: #ececec;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.main-tour {
+  font-family: var(--primary-font);
+  background-color: rgb(225 225 225 / 33%);
+}
+.tours {
+  font-family: var(  --primary-font);
+}
+.box h4 {
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+}
+.box .hotel-location {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.tours .box {
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform var(--main-transition), box-shadow var(--main-transition);
+  width: 98%;
+}
+.tours .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
+.tours .rate {
+  color: orange;
+}
+.tours .rate span {
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+.img-fluid {
+  width: 410px;
+  height: 200px;
+}
+.tours p {
+  color: #777;
+  font-size: 18px;
+}
+.tours p span{
+  color: #2196f3;
+  font-size: 22px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.tours ul .active {
+  background-color: #2196f3;
+  color: white;
+}
+.tours ul li {
+  padding: .5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #eee;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+.tours ul li:hover {
+  background-color: #2196f3;
+  transition: .4s;
+}
+.tours ul a li:hover{
+  color: white;
+}
+.tours ul li{
+  text-decoration: none;
+  font-size: 15px;
+  color: #ccc;
+}
+.tours ul li.active a {
+  color: white;
+}

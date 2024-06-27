@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/user-dashboard/user.css">
+  <link rel="stylesheet" href="/css/all-hotels.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/destination.html">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/all-hotels.html">Our Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary opacity-75 px-3" id="lgn" role="button">Login</a>
+      <div id="login-overlay">
+          <div class="login-container p-4">
+              <h1>Login<span class="closeBtn">x</span></h1>
+              <form action="/login" method="post">
+                  <div class="d-flex justify-content-between mt-5 lgn-display">
+                      <div class="name-pass d-flex">
+                          <label for="username">Username or Email</label>
+                          <input type="text" id="username" name="username" placeholder="Username or Email">
+                      </div>
+                      <div class="name-pass d-flex">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password">
+                      </div>
+                  </div>
+                  <button id="signin" type="submit">Sign In</button>
+                  <div class="clk-a d-flex flex-column">
+                      <a style="cursor: pointer;" class="first-a" id="forgetPassword" >Forgot Password?</a>
+                      <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+                      <a class="last-a" href="/register.html">Create an Account</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="forgot-password-overlay" style="display: none;">
+      <div class="forgot-password-container p-4">
+          <h1>Forgot Password<span class="closeBtn">x</span></h1>
+          <hr>
+          <form action="/forgot-password" method="post">
+              <div class="d-flex justify-content-between mt-5">
+                  <div class="email-input d-flex justify-content-between align-items-center">
+                      <label for="forgot-email">Email :</label>
+                      <input type="email" id="forgot-email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <button id="send-reset-link" type="submit">Continue</button>
+          </form>
+      </div>
+  </div>
+  
+
+<div id="verify-code-overlay" style="display: none;">
+  <div class="verify-code-container p-4">
+    <h1>Verify Code<span class="closeBtn">x</span></h1>
+    <hr>
+    <form action="/verify-code" method="post">
+      <div class="d-flex justify-content-between mt-5">
+        <div class="code-input d-flex">
+          <label for="verify-code">Code</label>
+          <input type="text" id="verify-code" name="code" placeholder="Verification Code">
+        </div>
+      </div>
+      <button id="verify-code-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<div style="display: none;" class="user-name user-info">
+  <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+  <span id="user-name-text"></span>
+  <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+  <ul>
+    <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+    <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+    <li><a id="signout" href="#">Signout</a></li>
+  </ul>
+</div>
+  </nav>
+  <!-- End Navbar -->
+
+
+  <!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+<!-- Start Tours -->
+<div class="main-tour pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Check Our-Hotels</h1>
+    </div>
+  </div>
+</div>
+
+<div class="tours mt-5 mb-5">
+  <div class="container">
+    <div class="row main-hotels" id="ID">
+
+      <!-- 
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <a href="/Tours-details/first-tour.html">
+          <div class="box mb-5">
+            <img class="img-fluid hotel-image" src="" alt="">
+            <div class="text p-5">
+              <h4 class="fw-bold fs-4 mb-3 main-head"></h4>
+              <div class="rate mb-3"><i class="filled fas fa-star"></i><span class="hotel-rate"></span></div>
+              <span class="hotel-location"></span>
+              <p class="mt-3">From <Span class="hotel-price"></Span></p>
+            </div>
+          </div>
+        </a>
+      </div> -->
+    </div>
+
+  </div>
+</div>
+<!-- End Tours -->
+
+
+<!-- Start Footer -->
+<!-- <div class="footer pt-5 pb-5 text-md-start text-center text-white-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+        <img src="/imgs/logo.png" alt="">
+        <p class="mt-4">
+          In Egypt, the walking rhyme,
+          the charming sentence,
+          the rebellious article,
+          and the fragrant idea
+        </p>
+        <div class="copyright mt-5">
+          Created By <span>Saqr</span>
+          <div>&copy; 2024 - <span>BFCAI</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5 mb-lg-0">
+        <div class="links">
+          <h5 class="text-light mb-2">Links</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Home</li>
+            <li class="mb-2">Our Services</li>
+            <li class="mb-2">Portfolio</li>
+            <li class="mb-2">Testimonials</li>
+            <li class="mb-2">Support</li>
+            <li class="mb-2">Terms and Condition</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5">
+        <div class="links">
+          <h5 class="text-light mb-2">About Us</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Sign in</li>
+            <li class="mb-2">Rsgister</li>
+            <li class="mb-2">About Us</li>
+            <li class="mb-2">Blog</li>
+            <li class="mb-2">Contact Us</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="contact">
+          <h5 class="text-light mb-2">Contact Us</h5>
+          <p class="mt-3 mb-5 lh-lg">
+            Get in touch with us via mail phone.We are waiting for your call or message
+          </p>
+          <a class="btn main-btn rounded-pill w-100" href="#">graphberry@gmail.com</a>
+          <ul class="d-flex mt-5 gap-5 list-unstyled justify-content-center">
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-facebook facebook rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-twitter twitter rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-linkedin linkedin rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-youtube youtube rounded-circle p-2"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<nav class="navbar nav-footer navbar-expand-lg p-3">
+  <div class="container foot">
+    <ul class="navbar-nav me-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+  </div>
+</nav>
+<!-- End Footer -->
+
+
+
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="/js/login.js"></script>
+<!-- <script src="/js/register.js"></script> -->
+<body>
+</body>
+</html>

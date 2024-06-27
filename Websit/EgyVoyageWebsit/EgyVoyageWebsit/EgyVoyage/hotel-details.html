@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/user-dashboard/user.css">
+  <link rel="stylesheet" href="/css/hotel-details.css">
+  <link rel="stylesheet" href="/css/all-hotels.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/destination.html">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/all-hotels.html">Our Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary opacity-75 px-3" id="lgn" role="button">Login</a>
+      <div id="login-overlay">
+          <div class="login-container p-4">
+              <h1>Login<span class="closeBtn">x</span></h1>
+              <form action="/login" method="post">
+                  <div class="d-flex justify-content-between mt-5 lgn-display">
+                      <div class="name-pass d-flex">
+                          <label for="username">Username or Email</label>
+                          <input type="text" id="username" name="username" placeholder="Username or Email">
+                      </div>
+                      <div class="name-pass d-flex">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password">
+                      </div>
+                  </div>
+                  <button id="signin" type="submit">Sign In</button>
+                  <div class="clk-a d-flex flex-column">
+                      <a style="cursor: pointer;" class="first-a" id="forgetPassword" >Forgot Password?</a>
+                      <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+                      <a class="last-a" href="/register.html">Create an Account</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="forgot-password-overlay" style="display: none;">
+      <div class="forgot-password-container p-4">
+          <h1>Forgot Password<span class="closeBtn">x</span></h1>
+          <hr>
+          <form action="/forgot-password" method="post">
+              <div class="d-flex justify-content-between mt-5">
+                  <div class="email-input d-flex justify-content-between align-items-center">
+                      <label for="forgot-email">Email :</label>
+                      <input type="email" id="forgot-email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <button id="send-reset-link" type="submit">Continue</button>
+          </form>
+      </div>
+  </div>
+  
+
+<div id="verify-code-overlay" style="display: none;">
+  <div class="verify-code-container p-4">
+    <h1>Verify Code<span class="closeBtn">x</span></h1>
+    <hr>
+    <form action="/verify-code" method="post">
+      <div class="d-flex justify-content-between mt-5">
+        <div class="code-input d-flex">
+          <label for="verify-code">Code</label>
+          <input type="text" id="verify-code" name="code" placeholder="Verification Code">
+        </div>
+      </div>
+      <button id="verify-code-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<div style="display: none;" class="user-name user-info">
+  <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+  <span id="user-name-text"></span>
+  <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+  <ul>
+    <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+    <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+    <li><a id="signout" href="#">Signout</a></li>
+  </ul>
+</div>
+  </nav>
+  <!-- End Navbar -->
+
+
+  <!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+<nav class="navbar navbar-expand-lg  py-0 second-nav sticky-top">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item py-3 tab active">
+        <a class="nav-link" aria-current="page" href="#detaill">Detail</a>
+      </li>
+      <li class="nav-item ms-5 py-3 tab">
+        <a class="nav-link" href="#itenrary">Itinerary</a>
+      </li>
+      <li class="nav-item ms-5 py-3 tab">
+        <a class="nav-link" href="#map">Map</a>
+      </li>
+      <li class="nav-item ms-5 py-3 tab">
+        <a class="nav-link" href="#room">Rooms</a>
+      </li>
+      <li class="nav-item ms-5 py-3 tab">
+        <a class="nav-link" href="#faq">FAQ</a>
+      </li>
+      <li class="nav-item ms-5 py-3 tab">
+        <a class="nav-link" href="#feed">Feedback</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+
+
+
+
+
+
+
+
+<div class="detail pt-5 pb-5" id="detail">
+  <div class="container">
+    <div class="text">
+      <h1 class="fw-bold" id="hotelName"></h1>
+      <div class="rate my-4"><i class="filled fas fa-star me-2"></i><span id="hotelRating"></span></div>
+      <!-- <ul class="list-unstyled d-flex justify-content-start  mb-5 f">
+        <li><i class="fa-regular fa-clock me-2 text-black-0"></i> 8 Hours</li>
+        <li><i class="fa-solid fa-people-group me-2"></i>Max Guests : 40</li>
+        <li><i class="fa-solid fa-wifi me-2"></i>Wifi Available</li>
+        <li><i class="fa-solid fa-calendar-days me-2"></i>Apr - Oct</li>
+      </ul> -->
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="big-photo">
+          <img src="" id="hotelImage" alt="" class="img-fluid pb-3 rounded big">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="box mb-3 bg-white" data-work="Application">
+          <img src="/imgs/shutterstock_636413090.jpg" id="hotelImage" alt="" class="img-fluid pb-3 rounded ">
+        </div>
+        <div class="box mb-3 bg-white" data-work="Application">
+          <img src="/imgs/egypt-aswan-nile-view.jpg" id="hotelImage" alt="" class="img-fluid pb-3 rounded ">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="box mb-3 bg-white" data-work="Application">
+          <img src="/imgs/egypt-cairo-islamic-cairo-mosque-view.jpg" id="hotelImage" alt="" class="img-fluid pb-3 rounded ">
+        </div>
+        <div class="box mb-3 bg-white" data-work="Application">
+          <img src="/imgs/egypt-luxor-karnak-temple-at-night.jpg" id="hotelImage" alt="" class="img-fluid pb-3 rounded ">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="detail-section" id="detaill">
+      <div class="part-1">
+        <div class="first">
+          <h2>Detail</h2>
+          <p id="hotelDescription">Leave your guidebooks at home and dive into the local cultures that make each
+            destination so special. We’ll
+            connect you with our exclusive experiences. Each trip is carefully crafted to let enjoy your vacation.</p>
+          <br>
+          <div class="include">
+            <h3>Price Include</h3>
+            <ul class="list-unstyled d-flex flex-column justify-content-center">
+              <li class="mb-3"><i class="fa-solid fa-check me-3"></i>Air fares</li>
+              <li class="mb-3"><i class="fa-solid fa-check me-3"></i>3 Nights Hotel Accomodation</li>
+              <li class="mb-3"><i class="fa-solid fa-check me-3"></i>On Trip Transport</li>
+              <li class="mb-3"><i class="fa-solid fa-check me-3"></i>2 Meals / day</li>
+            </ul>
+          </div>
+          <div class="exclude">
+            <h3>Price Exclude</h3>
+            <ul class="list-unstyled d-flex flex-column justify-content-center me-5">
+              <li class="mb-3"><i class="fa-solid fa-xmark me-3"></i>Driver Service Fee</li>
+              <li class="mb-3"><i class="fa-solid fa-xmark me-3"></i>Guide Service Fee</li>
+              <li class="mb-3"><i class="fa-solid fa-xmark me-3"></i>Room Service Fees</li>
+            </ul>
+          </div>
+        </div>
+        <div class="second">
+          <h2>What to Expect</h2>
+          <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I
+            enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for
+            the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere
+            tranquil existence, that I neglect my talents.</p>
+          <ul class="d-flex flex-column justify-content-center mt-5">
+            <li class="mb-3">View the City Walls</li>
+            <li class="mb-3">Sunset on the cruise</li>
+            <li class="mb-3">Discover the famous view point “The Lark”</li>
+          </ul>
+        </div>
+      </div>
+      <div class="part-2 ps-3">
+        <!-- <section class="booking-form p-4 mb-5">
+          <div class="text">
+            <p>Price</p>
+            <p><i class="fa-regular fa-bookmark me-4"></i><span>$2,000</span></p>
+          </div>
+          <h4 class="mt-3">Booking Form</h4>
+          <form action="#" class="py-5">
+            <div class="inner">
+              <label for="date"><i class="fa-solid fa-calendar-days me-2"></i></label>
+              <input type="date" id="date" name="date" value="2024-02-05">
+            </div>
+            <div class="inner">
+              <label for="number-of-people"><i class="fa-solid fa-people-group me-2"></i></label>
+              <select class="people-number" name="number-of-people">
+                <option value="any">Number Of People</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="inner">
+              <label for=""><i class="fa-solid fa-bolt me-2"></i></label>
+              <button type="submit" class="text-center m-auto"><a href="/Payment/payment-page-1.html">Proceed booking</a></button>
+            </div>
+          </form>
+          <a href=""><i class="fa-regular fa-heart me-2"></i>Save To Wish List</a>
+        </section> -->
+        <section class="confidence pt-5 px-4 mb-5">
+          <h3 class="mb-4">Book With Confidence</h3>
+          <ul class="list-unstyled d-flex flex-column justify-content-center">
+            <li class="mb-3"><i class="fa-regular fa-thumbs-up me-3"></i>No-hassle best price guarantee</li>
+            <li class="mb-3"><i class="fa-solid fa-phone me-3"></i>Customer care available 24/7</li>
+            <li class="mb-3"><i class="fa-regular fa-star me-3"></i>Hand-picked Tours & Activities</li>
+            <li class="mb-3"><i class="fa-brands fa-freebsd me-3"></i>Free Travel Insureance</li>
+          </ul>
+        </section>
+        <section class="need-help pt-5 px-4 mb-5">
+          <h3 class="mb-4">Need Help?</h3>
+          <ul class="list-unstyled d-flex flex-column justify-content-center">
+            <li class="mb-3"><i class="fa-solid fa-phone me-3"></i>1.8445.3356.33</li>
+            <li class="mb-3"><i class="fa-regular fa-envelope me-3"></i> Help@goodlayers.com</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Start Itinerary -->
+<div class="itenrary pt-5 pb-5" id="itenrary">
+  <div class="container">
+    <h2 class="primary-heading">Itinerary</h2>
+    <div class="text">
+      <h4>Day 1</h4>
+      <p id="dayOneItenrary">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland”
+        meeting. Then we’ll take a
+        meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another
+        over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
+    </div>
+    <div class="text">
+      <h4>Day 2</h4>
+      <p id="dayTwoItenrary">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland”
+        meeting. Then we’ll take a
+        meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another
+        over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
+    </div>
+    <div class="text">
+      <h4>Day 3</h4>
+      <p id="dayThreeItenrary">We’ll meet at 4 p.m. at our hotel in Luzern (Lucerne) for a “Welcome to Switzerland”
+        meeting. Then we’ll take a
+        meandering evening walk through Switzerland’s most charming lakeside town, and get acquainted with one another
+        over dinner together. Sleep in Luzern (2 nights). No bus. Walking: light.</p>
+    </div>
+  </div>
+</div>
+<!-- End Itinerary -->
+
+
+<!-- Start Map -->
+<div class="map pt-5 pb-5" id="map">
+  <div class="container">
+    <h2 class="primary-heading">Map</h2>
+    <div class="mp" id="mp">
+      <!-- <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183618.25971675848!2d29.854807182071674!3d31.22413135242952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c49126710fd3%3A0xb4e0cda629ee6bb9!2sAlexandria%2C%20Alexandria%20Governorate!5e0!3m2!1sen!2seg!4v1707317360107!5m2!1sen!2seg"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+    </div>
+  </div>
+</div>
+<!-- End Map -->
+
+
+<!-- Start Room -->
+<div class="room pt-5 pb-5" id="room">
+  <div class="container">
+    <h1 class="mb-5 primary-heading">Select Your Room</h1>
+    <div class="row filterRooms">
+      <!-- <div class="col-lg-12 mb-5">
+        <div class="room-prop">
+          <h4 class="mb-4 primary-heading fs-5">${filteredRooms[i].name}</h4>
+          <h4 class="mb-4 primary-heading fs-6 text-end room-id" ">Room id / <span class="roomID">${filterid}</span></h4>
+          <h6 class="room-price mb-5"><span>${filteredRooms[i].price}</span>$ /night</h6>
+          <div class="text">
+            <ul class="list-unstyled d-flex justify-content-between  mb-5 f">
+              <li><i class="fa-solid fa-bed me-2 text-black-0"></i><span id="beds-number">${filteredRooms[i].category}</span></li>
+              <li><i class="fa-solid fa-people-group me-2"></i><span id="guests-number">${filteredRooms[i].capacity}</span></li>
+              <li><i class="fa-solid fa-city me-2"></i><span id="view-prop">City View</span></li>
+            </ul>
+            <div class="amenities d-flex">
+              <div class="image"><img src="/imgs/01.jpg" class=" m" alt=""></div>
+              <ul class="list-unstyled d-flex ">
+                <li><i class="fa-solid fa-tv me-4"></i>Wifi<span class="serviceColor ms-2">${wifiStatus}<\span></li>
+                <li><i class="fa-solid fa-tv me-4"></i>Smoking <span class="serviceColor ms-2">${smokingStatuss}</li>
+                <li><i class="fa-solid fa-tv me-4"></i>Breakfast <span class="serviceColor ms-2">${breakfastStatus}</li>
+              </ul>
+            </div>
+            <div class="submit">
+              <a href="/Payment/payment-page-1.html"><button type="submit">Book Now</button></a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div id="roomNotFound" class="text-center fw-bold" style="display: block;">
+      <p>Rooms Not Avaliable in this Hotel</p>
+    </div>
+    <button type="button" id="confirm-reservation" class="confirm-reservation btn btn-primary">Confirm Reservation</button>
+  </div>
+</div>
+<!-- End Room -->
+
+
+
+
+<div class="faq pt-5 pb-5" id="faq">
+  <div class="container">
+    <h2 class="primary-heading">FAQ</h2>
+    <div class="question mb-4">
+      <h3>How can I book a hotel?</h3>
+      <p>You can book a hotel through our website by entering your travel dates and selecting the city you wish to stay in. Then,
+        choose the hotel that suits you and complete the booking process.</p>
+    </div>
+    <div class="question mb-4">
+      <h3>What services does the hotel offer?</h3>
+      <p>Services vary from hotel to hotel. You can view the details of the services offered on the hotel's page on our website.</p>
+    </div>
+    <div class="question">
+      <h3>Can I request a specific room in the hotel?</h3>
+      <p>You can request a specific room when booking, but we cannot guarantee its availability as it depends on the hotel's occupancy at the time of your arrival.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="review mt-5 mb-5 pb-5" id="feed">
+  <div class="container">
+    <h2 class="primary-heading">Feedback</h2>
+    <div class="review" id="reviews-container">
+      <!-- <div class="content d-flex">
+          <div class="name me-5">marwanEmad</div>
+          <div class="descriptionn">
+            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores facilis rerum perspiciatis repudiandae laudantium nostrum ab corrupti veniam est, consectetur quaerat culpa, fugiat at sit inventore magni obcaecati nam exercitationem.</div>
+            <div class="stars">★★★★★</div>
+          </div>
+      </div> -->
+  </div>
+  </div>
+  </div>
+
+<!-- Start Related Tours -->
+<div class="tours mt-5 mb-5">
+  <div class="container ">
+    <h2 class="primary-heading">Related Hotels</h2>
+    <div class="row related-hotels">
+      <!-- <div class="col-sm-12 col-md-6 col-lg-4">
+        <a href="">
+          <div class="box mb-5">
+            <img class="img-fluid" src="/imgs/tour-1.jpg" alt="">
+            <div class="text px-5">
+              <h4 class="fw-bold fs-4 my-3">Nasr City - Al Masa Hotel</h4>
+              <div class="rate mb-3">
+                <i class="filled fas fa-star"></i>
+                <i class="filled fas fa-star"></i>
+                <i class="filled fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="start">1 Night</span>
+              <p class="mt-3">From <Span> $100</Span></p>
+            </div>
+          </div>
+        </a>
+      </div> -->
+    </div>
+    <div id="NotFound" class="text-center fw-bold" style="display: block;">
+      <p>No Other Hotels In Same Location</p>
+    </div>
+    
+  </div>
+</div>
+<!-- End Related Tours -->
+
+
+
+
+
+<!-- Start Footer -->
+<nav class="navbar nav-footer navbar-expand-lg p-3">
+  <div class="container foot">
+    <ul class="navbar-nav me-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+  </div>
+</nav>
+<!-- End Footer -->
+
+
+<script src="/js/all.min.js"></script>
+<script src="/js/alert.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+
+
+<script>
+
+
+  const url = window.location.href;
+  function extractParamValue(url) {
+    return function (parameterName) {
+      const queryString = url.split('?')[1];
+      if (queryString) {
+        const queryParams = new URLSearchParams(queryString);
+        if (queryParams.has(parameterName)) {
+          return queryParams.get(parameterName);
+        }
+      }
+      return null;
+    };
+  }
+  let getParamValue = extractParamValue(url);
+  const idValue = getParamValue('id');
+  const locationValue = getParamValue('location');
+  console.log(idValue);
+  console.log(locationValue);
+
+
+
+  let hotelName = document.getElementById("hotelName");
+  let hotelRating = document.getElementById("hotelRating");
+  let iimg = document.getElementById("hotelImage");
+  let hotelDescription = document.getElementById("hotelDescription");
+  let dayOneItenrary = document.getElementById("dayOneItenrary");
+  let dayTwoItenrary = document.getElementById("dayTwoItenrary");
+  let dayThreeItenrary = document.getElementById("dayThreeItenrary");
+  let mp = document.getElementById("mp");
+
+
+
+
+
+
+  // Properites of clickable hotel
+  async function readData() {
+    console.log("Before Fetch");
+    try {
+      let response = await fetch(`http://egyvoyage2.somee.com/api/Hotel`);
+
+      let data = await response.json();
+
+      const filteredHotel = data.filter(hotel => hotel.id == idValue)[0];
+
+      console.log(filteredHotel);
+
+      hotelName.innerHTML = filteredHotel.name;
+      hotelRating.innerHTML = filteredHotel.rating;
+      iimg.src = filteredHotel.image;
+      hotelDescription.innerHTML = filteredHotel.description;
+      dayOneItenrary.innerHTML = filteredHotel.day1;
+      dayTwoItenrary.innerHTML = filteredHotel.day2;
+      dayThreeItenrary.innerHTML = filteredHotel.day3;
+      mp.innerHTML = filteredHotel.map;
+
+      localStorage.setItem("hotelReserved",JSON.stringify(filteredHotel));
+
+    } catch (reason) {
+      console.log(`Erorr ${reason}`);
+    } finally {
+      console.log("After Fetch")
+    }
+  }
+  readData();
+
+
+
+
+  // Showing Related Rooms With Same Hotel Id
+  let bookedRooms = [];
+  async function bookRoom(id, price) {
+    const isAlreadyBooked = bookedRooms.some(room => room.id === id);
+    if(document.querySelector(".user-name").style.display == "none") {
+      showAlert(`You Must Log in First`,'danger',5000);
+    }
+    else if (isAlreadyBooked) {
+      showAlert(`Room with ID ${id} is already booked!`,'danger',3000);
+    } else {
+      bookedRooms.push({ id, price });
+      localStorage.setItem('bookedRooms', JSON.stringify(bookedRooms));
+      showAlert(`Room with ID ${id} is  booked!`,'success',3000);
+      console.log("Booked Rooms: ", bookedRooms);
+    }
+    event.preventDefault();
+  }
+
+  
+  async function readDataRooms() {
+    console.log("Before Fetch");
+    try {
+      let response = await fetch(`http://egyvoyage2.somee.com/api/Room`);
+      let data = await response.json();
+      const filteredRooms = data.filter(hotel => hotel.hotel_id == idValue);
+      console.log(filteredRooms);
+      if (filteredRooms.length != 0) {
+        document.getElementById("roomNotFound").style.display = "none";
+      }
+      for (let i = 0; i < filteredRooms.length; i++) {
+        if(filteredRooms.length > 0) {
+          let wifiStatus;
+        if (filteredRooms[i].freeWifi === true) {
+          wifiStatus = "Available";
+        } else {
+          wifiStatus = "Not Available";
+        }
+
+        let breakfastStatus;
+        if (filteredRooms[i].breakfast === true) {
+          breakfastStatus = "Available";
+        } else {
+          breakfastStatus = "Not Available";
+        }
+
+        let smokingStatus;
+        if (filteredRooms[i].smoking === true) {
+          smokingStatus = "Available";
+        } else {
+          smokingStatus = "Not Available";
+        }
+
+        let content = `
+      <div class="col-lg-12 mb-5">
+        <div class="room-prop">
+          <h4 class="mb-4 primary-heading fs-5">${filteredRooms[i].name}</h4>
+          <h4 class="mb-4 primary-heading fs-6 text-end room-id">Room id / <span class="roomID">${filteredRooms[i].id}</span></h4>
+          <h6 class="room-price mb-5"><span class="roomPrice">${filteredRooms[i].price}</span>$ /night</h6>
+          <div class="text">
+            <ul class="list-unstyled d-flex justify-content-between mb-5">
+              <li><i class="fa-solid fa-bed me-2 text-black-0"></i><span id="beds-number">${filteredRooms[i].category}</span></li>
+              <li><i class="fa-solid fa-people-group me-2"></i><span id="guests-number">${filteredRooms[i].capacity}</span></li>
+              <li><i class="fa-solid fa-city me-2"></i><span id="view-prop">City View</span></li>
+            </ul>
+            <div class="amenities d-flex">
+              <div class="image"><img src="${filteredRooms[i].image}" class=" m" alt=""></div>
+              <ul class="list-unstyled d-flex">
+                <li><i class="fa-solid fa-wifi me-4"></i>Wifi<span class="serviceColor ms-2">${wifiStatus}</span></li>
+                <li><i class="fa-solid fas fa-smoking me-4"></i>Smoking <span class="serviceColor ms-2">${smokingStatus}</span></li>
+                <li><i class="fa-solid fas fa-utensils me-4"></i>Breakfast <span class="serviceColor ms-2">${breakfastStatus}</span></li>
+              </ul>
+            </div>
+            <div class="submit">
+              <a href="#"><button class="bookRoom" type="button">Book Now</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      `;
+        document.querySelector(".filterRooms").innerHTML += content;
+        document.getElementById("roomNotFound").style.display = "none";
+
+        }
+      }
+    } catch (reason) {
+      console.log(`Error ${reason}`);
+    } finally {
+      console.log("After Fetch");
+      document.querySelector(".filterRooms").addEventListener("click", function (event) {
+        if (event.target.classList.contains("bookRoom")) {
+          const roomId = event.target.closest(".room-prop").querySelector(".roomID").textContent;
+          const roomPrice = event.target.closest(".room-prop").querySelector(".roomPrice").textContent;
+          console.log(roomId);
+          console.log(roomPrice);
+          bookRoom(roomId, roomPrice);
+        }
+      });
+    }
+  }
+  readDataRooms();
+  console.log(bookedRooms);
+
+  document.getElementById("confirm-reservation").addEventListener("click", function() {
+    if(bookedRooms.length > 0 && document.querySelector(".user-name").style.display == "block") {
+      window.location.href = "/reserve-cofirmation.html";
+    }
+    else if (document.querySelector(".user-name").style.display == "none"){
+      showAlert(`You Must Log in First`,'danger',5000)
+    } else {
+      showAlert(`You have not booked any rooms yet`,'danger',3000)
+    }
+});
+
+
+
+  // Showing Related Hotels With Same Location
+  async function readRelatedHotell() {
+    console.log("Before Fetch");
+    try {
+      let response = await fetch(`http://egyvoyage2.somee.com/api/Hotel`);
+      let data = await response.json();
+
+
+      const filteredHotels = data.filter(hotel => hotel.location.trim() === locationValue);
+
+      
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+      let filteredRelatedHotels = shuffleArray(filteredHotels);
+      console.log(filteredRelatedHotels);
+
+      for (let i = 0; i < 3; i++) {
+        if (filteredRelatedHotels[i].id != idValue) {
+          let content = `
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <a href="/hotel-details.html?id=${filteredRelatedHotels[i].id}&location=${filteredRelatedHotels[i].location}" id=link>
+          <div class="box mb-5">
+            <img class="img-fluid hotel-image" src="${filteredRelatedHotels[i].image}" alt="">
+            <div class="text p-5">
+              <h4 class="fw-bold fs-4 mb-3 main-head">${filteredRelatedHotels[i].name}</h4>
+              <div class="rate mb-3"><i class="filled fas fa-star"></i><span class="hotel-rate">${filteredRelatedHotels[i].rating}</span></div>
+              <span class="hotel-location">${filteredRelatedHotels[i].location}</span>
+              <p class="mt-3">From <Span class="hotel-price">$${filteredRelatedHotels[i].price}</Span></p>
+            </div>
+          </div>
+        </a>
+      </div>`;
+          document.querySelector(".related-hotels").innerHTML += content;
+          document.getElementById("NotFound").style.display = "none";
+        }
+      }
+    } catch (reason) {
+      console.log(`Erorr ${reason}`);
+    } finally {
+      console.log("After Fetch")
+    }
+  }
+  readRelatedHotell();
+
+</script>
+<script>
+  // Fetch feedback data
+  async function readFeedbackData () {
+  console.log("Before Fetch");
+  try {
+    let response = await fetch (`http://egyvoyage2.somee.com/api/Feedback?hotel_id=${idValue}`);
+    let data = await response.json();
+      let content = `
+    <div class="content d-flex">
+        <div class="name me-5">${data[1].name}</div>
+        <div class="descriptionn">
+          <div class="description">${data[1].description}</div>
+          <div class="stars">${'★'.repeat(data[1].rating)}</div>
+        </div>
+    </div>
+      `;
+      document.querySelector("#reviews-container").innerHTML +=content;
+    console.log(data); 
+  } catch(reason) {
+    console.log(`Erorr ${reason}`);
+  } finally {
+    console.log("After Fetch")
+  }
+}
+readFeedbackData();
+</script>
+<body>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgyVoyage</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/ana.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Spice' rel='stylesheet'>
+    <style>
+        .chart-container {
+            position: relative;
+            height: 150px;
+        }
+
+        .chart-container canvas {
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        .bar-graph {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bar {
+            height: 20px;
+            background-color: #4CAF50; /* Good feedback bar color */
+            position: relative;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .bar span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px; /* Adjust the font size as needed */
+            font-weight: bold; /* Optional: Add font weight */
+        }
+
+        .bar-two .bar {
+            background-color: #F44336; /* Bad feedback bar color */
+        }
+    </style>
+    <style>
+    .container img {
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+  }
+  
+    </style>
+</head>
+
+<body>
+
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link p-3 " aria-current="page" href="add-hotel.html">Add Hotel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-3 " href="all-hotels.html">All Hotels</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-3 " href="all-places.html">All Places</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-3 " href="add-place.html">Add Place</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-3 " href="Analyze.html">Hotel Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-3 active" href="/admin/Hotel Analyze.html">Feedback Analytics</a>
+                  </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="all-hotels pt-5">
+        <div class="container">
+            <div class="row" id="hotelsRow">
+                <!-- Hotels and bar graphs will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/all.min.js"></script>
+    <script src="/admin/js/main.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/egyVoyage.js"></script>
+    <script src="/admin/js/edit-hotel.js"></script>
+    <script src="/admin/js/show-hotel.js"></script>
+    <script src="/admin/js/delete-hotel.js"></script>
+    <script src="/admin/js/add-hotel.js"></script>
+    <script src="/admin/js/add-room.js"></script>
+    <script src="/admin/js/show-room.js"></script>
+
+    <script>
+        // Function to generate random colors
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to send feedback API request
+        async function sendFeedback(hotelId, isGoodFeedback) {
+            try {
+                // Define your API endpoint for sending feedback
+                const apiUrl = 'http://egyvoyage2.somee.com/api/DashBoard/show_feedback';
+
+                // Prepare data to send
+                const params = {
+                    type: isGoodFeedback ? 'true' : 'false',  // Convert to string 'true' or 'false'
+                    HotelId: hotelId
+                };
+
+                // Make GET request to API
+                const response = await axios.get(apiUrl, { params });
+                console.log('Feedback sent:', response.data);
+
+                // Redirect to feedback.html or handle success as needed
+                window.location.href = `/admin/feedback.html?HotelId=${hotelId}&type=${isGoodFeedback}`;
+
+            } catch (error) {
+                console.error('Error sending feedback:', error);
+                // Handle error scenario here
+            }
+        }
+
+        // Function to fetch and display hotels with feedback
+        async function fetchAndDisplayHotelsWithFeedback() {
+            try {
+                // Fetch hotels
+                const hotelsResponse = await axios.get('http://egyvoyage2.somee.com/api/Hotel');
+                const hotels = hotelsResponse.data;
+
+                // Fetch feedback
+                const feedbackResponse = await axios.get('http://egyvoyage2.somee.com/api/DashBoard/feedback_analysis');
+                const feedbackData = feedbackResponse.data;
+
+                let html = '';
+                for (let hotel of hotels) {
+                    // Find the feedback for the current hotel
+                    const feedback = feedbackData.find(feedback => feedback.hotelId === hotel.id);
+
+                    html += `
+                        <div id="hotel${hotel.id}" class="col-sm-12 col-md-3 col-lg-4 pt-4">
+                                <div class="box mb-5">
+                                    <img style="height:250px; width:100%" class="img-fluid" src="${hotel.image}" alt="">
+                                    <div class="text p-5">
+                                        <h4 class="fs-5 fw-bold mb-3">${hotel.name}</h4>
+                                        <div class="rate mb-3">
+                                            <i class="filled fas fa-star me-2"></i>
+                                            <span class="hotel-rate">${hotel.rating}</span>
+                                        </div>
+                                        <div>
+                                            <span class="year">${hotel.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <section class="bar-graph bar-graph-horizontal bar-graph-one">
+                                <div class="bar-one">
+                                    <span class="year">Good</span>
+                                    <div class="bar" style="width: ${feedback ? feedback.good * 10 : 0}%;"><span>${feedback ? feedback.good : 0}%</span></div>
+                                </div>
+                                <div class="bar-two">
+                                    <span class="year">Bad</span>
+                                    <div class="bar" style="width: ${feedback ? (feedback.bad * 10 - 1) : 0}%;"><span>${feedback ? feedback.bad : 0}%</span></div>
+                                </div>
+                            </section>
+                            <div class="pt-3">
+                                <button class="btn btn-primary me-2" onclick="sendFeedback(${hotel.id}, true)">Good Feedback</button>
+                                <button class="btn btn-danger" onclick="sendFeedback(${hotel.id}, false)">Bad Feedback</button>
+                            </div>
+                        </div>`;
+                }
+                document.getElementById('hotelsRow').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Fetch data and display hotels with feedback on page load
+        fetchAndDisplayHotelsWithFeedback();
+    </script>
+
+</body>
+
+</html>

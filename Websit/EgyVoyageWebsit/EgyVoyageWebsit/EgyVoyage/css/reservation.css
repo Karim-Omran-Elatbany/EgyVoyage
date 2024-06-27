@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.image-container img {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+.infooo {
+  padding-left: 15px;
+}
+
+.infooo h2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+  align-items: center;
+  font-size: 22px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: cursive;
+}
+.ps-details {
+  font-size: 20px;
+}
+.user-name {
+  color: rgb(0, 81, 255);
+  font-weight: bold;
+  font-size: 20px;
+}
+.dates {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.date {
+  width: 48%;
+}
+.date label {
+  display: block;
+  font-size: 14px;
+  color: #777;
+}
+.date span {
+  display: block;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.detaills {
+  margin-bottom: 20px;
+}
+.detaills p {
+  margin-bottom: 10px;
+}
+.detaills hr {
+  margin: 20px 0;
+}
+.confirm-button {
+  background-color: var(--mainColor);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #6d4c41;
+}
+
+@media (min-width: 768px) {
+  .container {
+      flex-direction: row;
+  }
+
+  .image-container {
+      width: 50%;
+      height: auto;
+  }
+
+  .info {
+      width: 50%;
+      padding: 40px;
+  }
+
+  .details {
+      display: flex;
+      flex-direction: column;
+  }
+}
+#roomsCount,
+#roomsPrice,#sign,.user-name {
+  color: #2196f3;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 5px;
+  text-transform: capitalize;
+}
+
+.dates .date input {
+  width: 180px;
+  padding: 10px 10px 10px 0;
+  border: none;
+  color: var(--primary-color);
+}
+.dates .date input:focus {
+  outline: none;
+}
+.dates .date label {
+color: black;
+}
+.confirm-button:hover {
+  background-color: rgb(17, 0, 255);
+  transition: 1s;
+}
+#nameInput,#saveButton{
+  display: none;
+}
+#nameInput{
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid;
+}
+#nameInput:focus{
+  outline: none;
+}
+#saveButton {
+  background-color: #3dcc99;
+  padding: 10px 30px;
+  margin-left: 30px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: 2px;
+}
+#editName {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+#feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.feedback-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 53%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px 20px;
+  border-radius: 15px;
+}
+#feedback-overlay h1{
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+#feedback-overlay   .closeBtn{
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
+.name-pass {
+  flex-direction: column;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+.name-pass label {
+  font-size: 14px;
+}
+.name-pass input[type="text"],
+.name-pass input[type="password"] {
+  margin-top: 10px;
+  width: 320px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+@media (max-width: 1669px) { /*Mediuem Devices*/
+  .name-pass input[type="text"],
+  .name-pass input[type="password"] {
+    width: 250px;
+  }
+}
+.name-pass input[type="text"]:focus,
+.name-pass input[type="password"]:focus {
+  outline: none;
+}
+
+.feedback-containerbutton[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.first-a {
+  text-decoration: none;
+  color: #007bff;
+  margin-top: 4px;
+  font-size: 14px;
+  text-align: end;
+  margin-bottom: 25px;
+}
+.hv-account {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  padding-top: 25px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.last-a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#feedback-overlay {
+  z-index: 100; /* Higher than main content's z-index */
+}
+.stop-scrolling {
+  height: 100vh;
+  overflow: hidden;
+}

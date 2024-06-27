@@ -1,0 +1,96 @@
+.main-register {
+  font-family: var(--primary-font);
+  background-color: rgb(225 225 225 / 33%);
+}
+.reigster .one{
+  width: calc( 50% - 14px);
+}
+@media (max-width: 991px) { /*Desktop Devices*/
+  .reigster .one{
+    width: 100%;
+  }
+}
+.reigster input {
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  width: 100%;
+}
+.reigster input:focus {
+  outline: none;
+}
+.reigster .date-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reigster .date-picker select,
+.country select,
+.gender select{
+  padding: 10px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  width: calc( 98% / 3);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 46px;
+}
+.country select,
+.gender select {
+  width: 100%;
+}
+.input-group {
+  position: relative;
+}
+.input-group #Toggle-password,
+.input-group #toggle-password{
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 25px;
+}
+input#confirm-password::placeholder {
+  color: gray;
+}
+input#confirm-password:focus {
+  outline: none; 
+}
+.reigster .date-picker select:focus,
+.country select:focus {
+  outline: none;
+}
+.reigster button {
+  background-color: #5c98f2;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+form {
+border-bottom: 1px solid #5c98f2;
+}
+@media (max-width: 767px) { /*Desktop Devices*/
+  .reigster .box {
+    text-align: center;
+  }
+  .reigster button {
+    width: 90%;
+    margin: 20px auto;
+  }
+}
+.reigster .exist h4 {
+  font-size: 14px;
+  font-family: var(--primary-font);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.reigster .exist a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/user-dashboard/user.css">
+  <link rel="stylesheet" href="/css/all-hotels.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <style>
+      .row.content {height: 700px}
+      .sidenav {
+        height: 100%;
+      }
+      
+      @media screen and (max-width: 767px) {
+        .sidenav {
+          height: auto;
+          padding: 15px;
+        }
+        .row.content {height: auto;} 
+      }
+    </style>
+</head>
+
+
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/destination.html">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/all-hotels.html">Our Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary opacity-75 px-3" id="lgn" href="#" role="button">Login</a>
+      <div id="login-overlay">
+          <div class="login-container p-4">
+              <h1>Login<span class="closeBtn">x</span></h1>
+              <form action="/login" method="post">
+                  <div class="d-flex justify-content-between mt-5 lgn-display">
+                      <div class="name-pass d-flex">
+                          <label for="username">Username or Email</label>
+                          <input type="text" id="username" name="username" placeholder="Username or Email">
+                      </div>
+                      <div class="name-pass d-flex">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password">
+                      </div>
+                  </div>
+                  <button id="signin" type="submit">Sign In</button>
+                  <div class="clk-a d-flex flex-column">
+                      <a style="cursor: pointer;" class="first-a" id="forgetPassword" >Forgot Password?</a>
+                      <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+                      <a class="last-a" href="/register.html">Create an Account</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <div id="forgot-password-overlay" style="display: none;">
+      <div class="forgot-password-container p-4">
+          <h1>Forgot Password<span class="closeBtn">x</span></h1>
+          <hr>
+          <form action="/forgot-password" method="post">
+              <div class="d-flex justify-content-between mt-5">
+                  <div class="email-input d-flex justify-content-between align-items-center">
+                      <label for="forgot-email">Email :</label>
+                      <input type="email" id="forgot-email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <button id="send-reset-link" type="submit">Continue</button>
+          </form>
+      </div>
+  </div>
+  
+
+
+<div id="verify-code-overlay" style="display: none;">
+  <div class="verify-code-container p-4">
+    <h1>Verify Code<span class="closeBtn">x</span></h1>
+    <hr>
+    <form action="/verify-code" method="post">
+      <div class="d-flex justify-content-between mt-5">
+        <div class="code-input d-flex">
+          <label for="verify-code">Code</label>
+          <input type="text" id="verify-code" name="code" placeholder="Verification Code">
+        </div>
+      </div>
+      <button id="verify-code-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+<div style="display: none;" class="user-name user-info">
+  <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+  <span id="user-name-text"></span>
+  <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+  <ul>
+    <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+    <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+    <li><a id="signout" href="#">Signout</a></li>
+  </ul>
+</div>
+  </nav>
+  <!-- End Navbar -->
+
+
+<!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+<!-- Start Tours -->
+<div class="main-tour pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold pb-5">Dashboard</h1>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav p-4">
+      <h4 class="py-4">My Account</h4>
+      <ul class="nav nav-pills nav-stacked d-flex flex-column">
+        <li><a href="/user-dashboard/user.html"><i class="fa-solid me-2 fa-tv"></i>Dashboard</a></li>
+        <li><a href="/user-dashboard/edit-profile.html"><i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile</a></li>
+        <li><a href="/user-dashboard/change-password.html"><i class="fa-solid fa-user-lock me-2"></i> Change Passowrd</a></li>
+      </ul><br>
+      <h4 class="py-4">Hotels Booking</h4>
+      <ul class="nav nav-pills nav-stacked d-flex flex-column">
+        <li class="active"><a href="#"><i class="fa-solid fa-file me-2"></i>My Booking</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-9">
+      <div class="editProfile">
+        <div class="directory p-5"><a href="/user-dashboard/user.html" class="me-2">Dashboard <span class="ms-2">></span></a>My Boooking</div>
+        <div class="row reserv-details ">
+            <div class="head">
+              <div class="">Name</div>
+              <div class="">Start / End</div>
+              <div class="">Price</div>
+              <div class="">Process Number</div>
+              <div class="">Cancel</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+
+<!-- Confirm Alert -->
+<div id="confirmBox" class="confirm-box">
+  <span class="close-btn" onclick="closeConfirmBox()">&times;</span>
+  <p>Are You Sure To Cancel Reservation?</p>
+  <button id="confirmYes" onclick="confirmAction()">Yes</button>
+  <button onclick="closeConfirmBox()">No</button>
+</div>
+
+<!-- Confirm Alert -->
+
+
+
+
+
+<script src="/js/searched-hotels.js"></script>
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script>
+
+
+// function setupUI() {
+//     const response = localStorage.getItem("response")
+//     const code = localStorage.getItem("code")
+//     const email = localStorage.getItem("email")
+//     let login = document.getElementById("lgn")
+//     if (email != null || code != null) {
+//       login.style.visibility = "hidden"
+//       document.querySelector(".user-name").style.display = "block"
+//       let lname = localStorage.getItem("lname");
+//       let fname = localStorage.getItem("fname");
+//       var name = fname.concat(" ").concat(lname);
+//       let userNameText = document.getElementById("user-name-text");
+//       userNameText.textContent = name;
+//     }
+//     else {
+//       login.style.visibility = "visible"
+//       document.querySelector(".user-name").style.display = "none"
+
+//     }
+//   }
+//   setupUI()
+
+
+//   logout
+//   let signoutBtn = document.getElementById("signout")
+//   let login = document.getElementById("lgn")
+//   signoutBtn.addEventListener("click", function (event) {
+//     event.preventDefault
+//     localStorage.clear()
+//     login.style.visibility = "visible"
+//   })
+//   setupUI()
+
+
+
+
+
+
+
+
+    let filterdEmail = localStorage.getItem("email");
+    console.log(filterdEmail);
+    async function readDataReservation() {
+    console.log("Before Fetch");
+    try {
+      let response = await fetch(`http://egyvoyage2.somee.com/api/Receipt?email=kareememad612005%40gmail.com`);
+
+      let reservations = await response.json();
+
+      const filteredReservations = reservations.filter(reservation => reservation.email === filterdEmail);
+
+      console.log(filteredReservations);
+
+      for (let i = 0; i < filteredReservations.length; i++) {
+      let content = `
+        <div class="headDetails">
+          <div class="hotelName" id="personName">${filteredReservations[i].name}</div>
+          <div class="roomType" id="startTravel">${filteredReservations[i].start.split('T')[0]} / ${filteredReservations[i].end.split('T')[0]}</div>
+          <div class="travelDate" id="endTravel">$${filteredReservations[i].total_price}</div>
+          <div class="totalPrice" id="processNumber">${filteredReservations[i].processNumber}</div>
+          <div class="paymentSatus d-flex align-items-center" id="deleteReservation">
+            <span class="ms-2 trach" data-id="${filteredReservations[i].id}" data-email="${filteredReservations[i].email}">
+              <i class="fa-solid fa-trash"></i>
+            </span>
+          </div>
+        </div>
+      `;
+      document.querySelector(".reserv-details").innerHTML += content;
+    }
+
+
+
+    document.querySelectorAll('.trach').forEach(item => {
+      item.addEventListener('click', async (event) => {
+        const id = event.currentTarget.getAttribute('data-id');
+        const email = event.currentTarget.getAttribute('data-email');
+        openCustomConfirmBox(id, email);
+      });
+    });
+  } catch (reason) {
+    console.log(`Error ${reason}`);
+  } finally {
+    console.log("After Fetch");
+  }
+}
+readDataReservation();
+
+
+function openCustomConfirmBox(id, email) {
+    const confirmBox = document.getElementById('confirmBox');
+    confirmBox.style.display = 'block';
+    confirmBox.setAttribute('data-id', id);
+    confirmBox.setAttribute('data-email', email);
+}
+
+function closeConfirmBox() {
+    document.getElementById('confirmBox').style.display = 'none';
+}
+
+async function confirmAction() {
+    const confirmBox = document.getElementById('confirmBox');
+    const id = confirmBox.getAttribute('data-id');
+    const email = confirmBox.getAttribute('data-email');
+    await deleteReservation(id, email);
+    closeConfirmBox();
+}
+
+
+
+
+// Function to delete reservation
+async function deleteReservation(id, email) {
+  try {
+    let response = await fetch(`http://egyvoyage2.somee.com/api/Reservation?id=${id}&mail=${email}`, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      showAlert(`Reservation with id ${id} Cancelled successfully`,'success',3000)
+      document.querySelector(`span[data-id="${id}"]`).closest('.headDetails').remove();
+    } else {
+      console.log(`Failed to delete reservation with id ${id}`);
+    }
+  } catch (reason) {
+    console.log(`Error ${reason}`);
+  }
+}
+
+</script>
+<script src="/js/alert.js"></script>
+<script src="/js/login.js"></script>
+<body>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/payment-page-1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+
+
+<!-- Start Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/pages/destination.html">Destination</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/Tours/Tours-list.html">Our Hotels</a>
+      </li>
+    </ul>
+    <a class="btn btn-primary opacity-75 px-3" href="/login.html" role="button">Login</a>
+  </div>
+</nav>
+<!-- End Navbar -->
+
+
+<div class="main-payment pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Payment Page</h1>
+    </div>
+  </div>
+</div>
+
+<!-- Start  pay-line -->
+<div class="line pt-5 pb-5">
+  <div class="container">
+    <ul class="list-unstyled d-flex justify-content-between">
+      <li>Select Tour</li>
+      <li>Contact Details</li>
+      <li class="wait">Payment</li>
+      <li class="wait">Complete</li>
+    </ul>
+  </div>
+</div>
+<!-- end  pay-line -->
+
+
+<!-- Start Contact-detail -->
+<div class="contact-detail pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="part-1 pb-5">
+          <form>
+            <h2>Contact Details</h2>
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+          
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="phone">Phone:</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="country">Country:</label>
+              <select id="country" name="country">
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="mx">Mexico</option>
+                </select>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between">
+              <label for="address">Address</label>
+              <textarea name="" id="address""></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="part-2">
+          <h2>Egypt – All Stunning Places</h2>
+          <section class="travel-info">
+            <p>Travel Date : February 21, 2024 ( <a href="/Tours-details/first-tour.html">edit</a> )</p>
+            <p>Traveller : 1</p>
+          </section>
+          <section class="price-breakdown">
+            <div class="total">
+              <h2>Traveller Base Price <span>1 x $1,200</span></h2>
+              <span class="price">$1200.00 </span>
+            </div>
+            <div>
+              <h2>Sub Total Price</h2>
+              <span class="price">$1200.00 </span>
+            </div>
+            <div>
+              <h2>Tax Rate</h2>
+              <span class="price">9٪</span>
+            </div>
+            <div>
+              <h2>Tax Due</h2>
+              <span class="price">$108.00</span>
+            </div>
+            <div>
+              <div class="coupon-code">
+                <label for="coupon">Coupon Code :</label>
+                <div class="div">
+                  <button type="button">Apply</button>
+                  <input type="text" id="coupon" name="coupon">
+                </div>
+              </div>
+            </div>
+            <div>
+              <h2 class="tot">Total Price</h2>
+              <span class="price">$1308.00</span>
+            </div>
+          </section>
+          <section class="payment-options">
+            <button type="button">Pay Full Amount</button>
+            <button type="button">Pay 30% Deposit</button>
+          </section>
+          <section class="next-step">
+            <a href="/Payment/payment-page-2.html"><button type="button">Next Step</button></a>
+          </section>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!-- End Contact-detail -->
+
+
+
+<!-- Start Footer -->
+<div class="footer pt-5 pb-5 text-md-start text-center text-white-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+        <img src="/imgs/logo.png" alt="">
+        <p class="mt-4">
+          In Egypt, the walking rhyme,
+          the charming sentence,
+          the rebellious article,
+          and the fragrant idea
+        </p>
+        <div class="copyright mt-5">
+          Created By <span>Saqr</span>
+          <div>&copy; 2024 - <span>BFCAI</span></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5 mb-lg-0">
+        <div class="links">
+          <h5 class="text-light mb-2">Links</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Home</li>
+            <li class="mb-2">Our Services</li>
+            <li class="mb-2">Portfolio</li>
+            <li class="mb-2">Testimonials</li>
+            <li class="mb-2">Support</li>
+            <li class="mb-2">Terms and Condition</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-2 mb-5">
+        <div class="links">
+          <h5 class="text-light mb-2">About Us</h5>
+          <ul class="list-unstyled lh-lg">
+            <li class="mb-2">Sign in</li>
+            <li class="mb-2">Rsgister</li>
+            <li class="mb-2">About Us</li>
+            <li class="mb-2">Blog</li>
+            <li class="mb-2">Contact Us</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="contact">
+          <h5 class="text-light mb-2">Contact Us</h5>
+          <p class="mt-3 mb-5 lh-lg">
+            Get in touch with us via mail phone.We are waiting for your call or message
+          </p>
+          <a class="btn main-btn rounded-pill w-100" href="#">graphberry@gmail.com</a>
+          <ul class="d-flex mt-5 gap-5 list-unstyled justify-content-center">
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-facebook facebook rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-twitter twitter rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-linkedin linkedin rounded-circle p-2"></i>
+              </a>
+            </li>
+            <li>
+              <a class="d-block text-light" href="#">
+                <i class="fa-brands fa-youtube youtube rounded-circle p-2"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar nav-footer navbar-expand-lg p-3">
+  <div class="container foot">
+    <ul class="navbar-nav me-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+  </div>
+</nav>
+<!-- End Footer -->
+
+
+
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+
+<body>
+</body>
+
+</html>

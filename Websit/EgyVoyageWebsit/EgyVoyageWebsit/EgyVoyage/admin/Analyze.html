@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyze</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/admin/css/all.min.css">
+<link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+<link rel="stylesheet" href="7admin/css/home.css">
+<link rel="stylesheet" href="/admin/css/register.css">
+<link rel="stylesheet" href="/admin/css/main.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Include Chart.js Data Labels plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+<style>
+  .chart-label {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  .chart-container {
+      margin-bottom: 30px; /* Adjust as needed */
+  }
+  .select-container {
+      margin-top: 30px; /* Adjust as needed */
+      text-align: center; /* Center the select dropdown */
+  }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i> <!-- Replace with correct font awesome class -->
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3" aria-current="page" href="add-hotel.html">Add Hotel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="all-hotels.html">All Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="all-places.html">All Places</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="add-place.html">Add Place</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 active" href="Analyze.html">Hotel Analytics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/admin/Hotel Analyze.html">Feedback Analytics</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<h1 class="heading">Hotel Analytics</h1>
+<div class="container-fluid">
+  <div class="row content">
+      <div class="col-sm-10">
+          <div class="content-container">
+              <!-- Pie Chart Section -->
+              <div>
+                <div class="chart-container">
+                  <h3 class="chart-label">Hotel reservation Percentage</h3> <!-- Label for the Pie Chart -->
+                  <canvas id="pieChart"></canvas>
+              </div>
+              <div class="table-container">
+                  <table id="hotelTable">
+                      <thead>
+                          <tr>
+                              <th>Color</th>
+                              <th>Hotel Name</th>
+                              <th>Percentage</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <!-- Rows will be inserted dynamically here -->
+                      </tbody>
+                  </table>
+              </div>
+              </div>
+              <div>
+                  <div>
+                      <!-- Bar Chart Section -->
+                      <div class="chart-container">
+                          <h3 class="chart-label">Number of hotel reservations in a month</h3> <!-- Label for the Bar Chart -->
+                          <canvas id="barChart1"></canvas>
+                      </div>
+                  </div>
+                  <div class="select-container">
+                      <select id="monthSelect" onchange="updateBarChart()">
+                          <option value="all">All</option>
+                          <option value="JAN">January</option>
+                          <option value="FEB">February</option>
+                          <option value="MAR">March</option>
+                          <option value="APR">April</option>
+                          <option value="MAY">May</option>
+                          <option value="JUN">June</option>
+                          <option value="JUL">July</option>
+                          <option value="AUG">August</option>
+                          <option value="SEP">September</option>
+                          <option value="OCT">October</option>
+                          <option value="NOV">November</option>
+                          <option value="DEC">December</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script src="/admin/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="/js/all.min.js"></script> <!-- Replace with correct paths -->
+<script>
+  
+</script>
+</body>
+</html>

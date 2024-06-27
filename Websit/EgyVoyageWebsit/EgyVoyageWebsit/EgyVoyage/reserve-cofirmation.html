@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/reservation.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/hotel-details.css">
+  <link rel="stylesheet" href="/css/all-hotels.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/destination.html">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" href="/all-hotels.html">Our Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-primary opacity-75 px-3" id="lgn" href="#" role="button" style="display: none;">Login</a>
+      <div id="login-overlay">
+          <div class="login-container p-4">
+              <h1>Login<span class="closeBtn">x</span></h1>
+              <form action="/login" method="post">
+                  <div class="d-flex justify-content-between mt-5 lgn-display">
+                      <div class="name-pass d-flex">
+                          <label for="username">Username or Email</label>
+                          <input type="text" id="username" name="username" placeholder="Username or Email">
+                      </div>
+                      <div class="name-pass d-flex">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password">
+                      </div>
+                  </div>
+                  <button id="signin" type="submit">Sign In</button>
+                  <div class="clk-a d-flex flex-column">
+                      <a style="cursor: pointer;" class="first-a" id="forgetPassword" >Forgot Password?</a>
+                      <span class="hv-account">DO NOT HAVE AN ACCOUNT?</span>
+                      <a class="last-a" href="/register.html">Create an Account</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <div id="forgot-password-overlay" style="display: none;">
+      <div class="forgot-password-container p-4">
+          <h1>Forgot Password<span class="closeBtn">x</span></h1>
+          <hr>
+          <form action="/forgot-password" method="post">
+              <div class="d-flex justify-content-between mt-5">
+                  <div class="email-input d-flex justify-content-between align-items-center">
+                      <label for="forgot-email">Email :</label>
+                      <input type="email" id="forgot-email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <button id="send-reset-link" type="submit">Continue</button>
+          </form>
+      </div>
+  </div>
+  
+
+
+<div id="verify-code-overlay" style="display: none;">
+  <div class="verify-code-container p-4">
+    <h1>Verify Code<span class="closeBtn">x</span></h1>
+    <hr>
+    <form action="/verify-code" method="post">
+      <div class="d-flex justify-content-between mt-5">
+        <div class="code-input d-flex">
+          <label for="verify-code">Code</label>
+          <input type="text" id="verify-code" name="code" placeholder="Verification Code">
+        </div>
+      </div>
+      <button id="verify-code-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+<div style="display: none;" class="user-name user-info">
+  <span id="user-name-icon"><i class="fa-solid fa-user me-2"></i></span>
+  <span id="user-name-text"></span>
+  <span><i class="ms-2 fa-solid fa-caret-down"></i></span>
+  <ul>
+    <li><a href="/user-dashboard/user.html">Dashboard</a></li>
+    <li><a href="/user-dashboard/edit-profile.html">Edit Profile</a></li>
+    <li><a id="signout" href="#">Signout</a></li>
+  </ul>
+</div>
+  </nav>
+  <!-- End Navbar -->
+
+
+<!-- Alert -->
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">&times;</span>
+  <span id="alertMessage"></span>
+</div>
+<!-- Alert -->
+
+
+
+<div class="main-tour pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Reservation</h1>
+    </div>
+  </div>
+</div>
+
+<div class="reservation mt-5 mb-5">
+  <div class="container">
+    <div class="reservation-info">
+      <div class="image-container">
+        <img id="hotel-reserved-image" src="/imgs/Cairo.jpg" class="" alt="Castle Hotel">
+      </div>
+      <div class="infooo">
+        <h2 id="hotel-reserved-name" class="hotel-Name">Castle Hotel</h2>
+        <div class="dates">
+          <div class="date mb-4">
+            <label for="start">Check-in Date</label>
+            <input id="start" type="date" name="start">
+          </div>
+          <div class="date mb-4">
+            <label for="end">Check-out Date</label>
+            <input id="end" type="date" name="end">
+          </div>
+        </div>
+        <div class="detaills">
+          <p>Number of Rooms: <span id="roomsCount">55</span></p>
+          <p>Total Price:<span id="sign">$</span><span id="roomsPrice">55</span></p>
+          <hr>
+          <h3 class="text-uppercase ps-details my-5">Your personal details</h3>
+          <p class="mb-5">User Name : <span class="user-name" id="firstName">Amr Sakr</span> ( <span id="editName">edit</span> )</p>
+          <input type="text" id="nameInput" placeholder="Enter new name">
+          <button  id="saveButton">Save</button>
+        </div>
+        <button class="confirm-button" id="confirmButton">Confirm Reservation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Start Feedback Tours -->
+<div id="feedback-overlay">
+  <div class="feedback-container p-4">
+    <h1>Your Feedback is help us<span id="closeBtn" class="closeBtn">x</span></h1>
+      <div class="d-flex justify-content-between mt-5">
+        <div class="feedBack ms-5">
+          <div class="text">
+            <textarea placeholder="  Leave You Feedback" name="opinion" id="opinion"></textarea>
+          </div>
+          <div class="rating">
+            <span class="star" id="starr" data-value="5">&#9733;</span>
+            <span class="star" id="starr" data-value="4">&#9733;</span>
+            <span class="star" id="starr" data-value="3">&#9733;</span>
+            <span class="star" id="starr" data-value="2">&#9733;</span>
+            <span class="star" id="starr" data-value="1">&#9733;</span>
+        </div>
+        <button type="button" id="feedbackButton" class="btn btn-primary">Submit</button>
+      </div>
+      </div>
+  </div>
+</div>
+<!-- End Feedback Tours -->
+
+
+
+
+<div id="alertBox" class="alert">
+  <span class="closebtn" onclick="closeAlert()">
+    &times;
+  </span>
+  <span id="alertMessage"></span>
+</div>;
+
+
+
+
+
+<!-- Start Footer -->
+<nav class="navbar nav-footer navbar-expand-lg p-3">
+  <div class="container foot">
+    <ul class="navbar-nav me-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div>Copyright © 2024 GoodLayers. All Rights Reserved.</div>
+  </div>
+</nav>
+<!-- End Footer -->
+
+<script src="/js/searched-hotels.js"></script>
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const startDate = new Date().toISOString().split('T')[0];
+  var toDay = document.getElementById('start');
+  toDay.setAttribute('min', startDate);
+  
+
+
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  var day = String(tomorrow.getDate()).padStart(2, '0');
+  var month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+  var year = tomorrow.getFullYear();
+  var tomorrowDate = year + '-' + month + '-' + day;
+  var tomorrowDay = document.getElementById('end');
+  tomorrowDay.setAttribute('min', startDate);
+  tomorrowDay.value = tomorrowDate;
+
+
+</script>
+
+
+
+<script>
+
+let dateone,datetwo;
+
+document.getElementById('start').addEventListener('change', function(){
+  dateone = new Date(document.getElementById('start').value);
+  datetwo = new Date(document.getElementById('end').value);
+
+  localStorage.setItem('startDate',dateone);
+  localStorage.setItem('endDate',datetwo);
+
+
+  if (isNaN(dateone) || isNaN(datetwo)) {
+    console.error('One or both dates are invalid.');
+  } else {
+    const timeDifference = datetwo - dateone;
+    dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+    console.log(dayDifference);
+  }
+
+  let totalPrice = 0;
+  let allRooms = [];
+  let roomsCount = bookedRooms.length;
+  for (let i = 0; i < bookedRooms.length; i++) {
+    totalPrice = totalPrice + parseFloat(bookedRooms[i].price);
+    allRooms.push(bookedRooms[i].id);
+  }
+  console.log(totalPrice*dayDifference);
+  console.log(allRooms);
+  document.getElementById("roomsCount").innerHTML = roomsCount;
+  document.getElementById("roomsPrice").innerHTML = totalPrice*dayDifference;
+
+});
+
+
+document.getElementById('end').addEventListener('change', function(){
+  dateone = new Date(document.getElementById('start').value);
+  datetwo = new Date(document.getElementById('end').value);
+
+
+  localStorage.setItem('startDate',dateone);
+  localStorage.setItem('endDate',datetwo);
+
+  if (isNaN(dateone) || isNaN(datetwo)) {
+    console.error('One or both dates are invalid.');
+  } else {
+    const timeDifference = datetwo - dateone;
+    dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+    console.log(dayDifference);
+  }
+
+
+  let totalPrice = 0;
+  let allRooms = [];
+  let roomsCount = bookedRooms.length;
+  for (let i = 0; i < bookedRooms.length; i++) {
+    totalPrice = totalPrice + parseFloat(bookedRooms[i].price);
+    allRooms.push(bookedRooms[i].id);
+  }
+  console.log(totalPrice*dayDifference);
+  document.getElementById("roomsCount").innerHTML = roomsCount;
+  document.getElementById("roomsPrice").innerHTML = totalPrice*dayDifference;
+
+});
+
+
+
+
+let arrive = localStorage.getItem("arrive");
+  console.log(arrive);
+  let departure = localStorage.getItem("departure");
+  console.log(departure);
+  document.getElementById("start").value = arrive;
+  document.getElementById("end").value = departure;
+
+  document.getElementById("start").addEventListener("change",function(){
+    let startvoyage  = this.value;
+  })
+
+
+  document.getElementById("end").addEventListener("change",function(){
+    let endvoyage = this.value;
+  })
+
+
+
+
+  
+  let dayDifference;
+  const date1 = new Date(arrive);
+const date2 = new Date(departure);
+if (isNaN(date1) || isNaN(date2)) {
+  console.error('One or both dates are invalid.');
+} else {
+  const timeDifference = date2 - date1;
+  dayDifference = timeDifference / (1000 * 60 * 60 * 24);
+  console.log(dayDifference);
+}
+
+
+
+
+
+
+  const bookedHotel = JSON.parse(localStorage.getItem('hotelReserved')) || [];
+  console.log(bookedHotel);
+  let hotelReservedImage = document.getElementById("hotel-reserved-image");
+  let hotelReservedName = document.getElementById("hotel-reserved-name");
+  let idValue = bookedHotel.id;
+  console.log(idValue);
+  hotelReservedImage.src = bookedHotel.image;
+  hotelReservedName.innerHTML = bookedHotel.name;
+  const bookedRooms = JSON.parse(localStorage.getItem('bookedRooms')) || [];
+  console.log(bookedRooms);
+
+
+
+
+  let totalPrice = 0;
+  let allRooms = [];
+  let roomsCount = bookedRooms.length;
+  for (let i = 0; i < bookedRooms.length; i++) {
+    totalPrice = totalPrice + parseFloat(bookedRooms[i].price);
+    allRooms.push(bookedRooms[i].id);
+  }
+  console.log(totalPrice*dayDifference);
+  console.log(allRooms);
+  document.getElementById("roomsCount").innerHTML = roomsCount;
+  document.getElementById("roomsPrice").innerHTML = totalPrice*dayDifference;
+
+
+  let lastName = localStorage.getItem("lname")
+  let firstName = localStorage.getItem("fname")
+  let emailUser = localStorage.getItem("email")
+  let fullName = firstName+" "+lastName;
+  document.getElementById("firstName").innerHTML=fullName;
+
+
+
+</script>
+
+
+
+<script>
+        document.getElementById('editName').addEventListener('click', function () {
+            const nameSpan = document.getElementById('firstName');
+            const nameInput = document.getElementById('nameInput');
+            const saveButton = document.getElementById('saveButton');
+
+            nameInput.style.display = 'inline';
+            saveButton.style.display = 'inline';
+            nameInput.value = nameSpan.textContent;
+
+            nameInput.focus();
+        });
+
+        
+
+        document.getElementById('saveButton').addEventListener('click', function() {
+            document.getElementById('nameInput').style.display = 'none';
+            document.getElementById('saveButton').style.display = 'none';
+        });
+
+
+        document.getElementById('nameInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('saveButton').style.display = 'none';
+            }
+        });
+      
+
+        document.getElementById('nameInput').addEventListener('change', function() {
+          let userName = '';
+            userName  = firstName + " " + lastName;
+            userName = document.getElementById('nameInput').value;
+            document.getElementById("firstName").innerHTML = userName ;
+        });
+</script>
+
+
+
+<script>
+  let confirmButton = document.getElementById("confirmButton");
+  confirmButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    console.log(document.getElementById("firstName").innerHTML);
+
+    const reserveData = {
+      "email": emailUser,
+      "name": document.getElementById("firstName").innerHTML,
+      "roomId": allRooms,
+      "start": document.getElementById("start").value,
+      "end": document.getElementById("end").value
+    };
+
+
+    let filterdmail = emailUser.toString();
+    let filterName = document.getElementById("firstName").innerHTML.toString();
+    let filterRooms = allRooms.toString();
+    let filterStart = document.getElementById("start").value.concat("T00:00:00").toString();
+    let filterEnd = document.getElementById("end").value.concat("T00:00:00").toString();
+
+    async function readDataReservation() {
+    try {
+      let response = await fetch(`http://egyvoyage2.somee.com/api/Receipt?email=kareememad612005%40gmail.com`);
+
+      let reservations = await response.json();
+
+      const filteredReservations = reservations.filter(reservation => reservation.email === filterdmail
+        && reservation.name === filterName &&
+        reservation.start === filterStart
+        && reservation.end === filterEnd);
+
+      if(filteredReservations.length == 0) {
+        fetch('http://egyvoyage2.somee.com/api/Reservation/reserv', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(reserveData)
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erorr is : ');
+            }
+            return response.json();
+          })
+          .then(data => {
+            showAlert(`Your reservation was completed successfully`,'success',2000)
+                        setTimeout(() => {
+                                        feedbackOverlay.style.display = 'block';
+                                        }, 2000);
+            console.log(data)
+            localStorage.setItem('ٌreservationDetails', JSON.stringify(data));
+          })
+          .catch(error => {
+            console.error(' Err:', error);
+          });
+      } 
+      else {
+        showAlert(`This Reservation Is Alerady Exist`,'danger',3000);
+      }
+  } catch (reason) {
+    console.log(`Error ${reason}`);
+  } finally {
+    console.log("After Fetch");
+  }
+}
+readDataReservation();
+
+    console.log(reserveData);
+  });
+</script>
+<script>
+
+
+  // feedBack Part ********************************
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const feedbackButton = document.getElementById("feedbackButton");
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedRating = this.getAttribute('data-value');
+            highlightStars(selectedRating);
+            console.log(`Rated: ${selectedRating} stars`);
+        });
+    });
+
+    feedbackButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        let opinion = document.getElementById("opinion").value;
+        const feedbackData = {
+            "email": emailUser,
+            "description": opinion,
+            "rating": selectedRating,
+        };
+
+        console.log(feedbackData);
+
+        fetch(`http://egyvoyage2.somee.com/api/FeedBack?hotel_id=${idValue}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(feedbackData)
+        })
+        .then(response => {
+            const contentType = response.headers.get('content-type');
+            if (!response.ok) {
+                throw new Error('Error is: ' + response.statusText);
+            }
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else {
+                return response.text();
+            }
+        })
+        .then(data => {
+            if (typeof data === 'string') {
+                console.log('Received non-JSON response:', data);
+                document.getElementById("opinion").value = "";
+                selectedRating = 0;
+                highlightStars(selectedRating); 
+                showAlert(`Thanks for Your Opinion`, 'success', 3000);
+            } else {
+                console.log(data);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    function highlightStars(rating) {
+        stars.forEach(star => {
+            if (star.getAttribute('data-value') <= rating) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+    }
+});
+
+
+
+const feedbackOverlay = document.getElementById('feedback-overlay');
+window.onload = function() {
+  feedbackOverlay.style.display = 'none';
+};
+
+
+let closeButton = document.getElementById("closeBtn");
+closeButton.addEventListener('click', function() {
+  feedbackOverlay.style.display = 'none';
+  window.location.href = '/index.html';
+});
+
+  </script>
+  <script src="/js/alert.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="/js/register.js"></script>
+</body>
+</html>

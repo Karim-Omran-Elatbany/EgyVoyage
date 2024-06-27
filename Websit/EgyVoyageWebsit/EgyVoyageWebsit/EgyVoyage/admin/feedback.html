@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgyVoyage</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/ana.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Spice' rel='stylesheet'>
+    <style>
+      .container img {
+        max-width: 50%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    
+      </style>
+</head>
+<body>
+    
+  <!-- Start Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link p-3 " aria-current="page" href="add-hotel.html">Add Hotel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 " href="all-hotels.html">All Hotels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 " href="all-places.html">All Places</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 " href="add-place.html">Add Place</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 " href="Analyze.html">Hotel Analytics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3 active" href="/admin/Hotel Analyze.html">Feedback Analytics</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+   <!-- End Navbar -->
+   <div class="container">
+    <h2>Hotels Feedback</h2>
+    <img id="hotelImage" src="" alt="Hotel Image">
+    <h2 class="hotel-name" id="hotelName"></h2>
+    <div id="hotelRating" class="rating"></div>
+</div>
+<div class="container">
+
+    <ul class="responsive-table" id="feedbackTable">
+        <li class="table-header">
+          <div class="col col-2">User Name</div>
+          <div class="col col-3">Rating</div>
+          <div class="col col-4">Description</div>
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    // Function to fetch and display hotel feedback based on hotelId and type
+    async function getHotelFeedback() {
+        try {
+            // Extract hotelId and type from URL query string
+            const urlParams = new URLSearchParams(window.location.search);
+            const hotelId = urlParams.get('HotelId');
+            const type = urlParams.get('type');
+
+            // Construct API URL with hotelId and type
+            const apiUrl = `http://egyvoyage2.somee.com/api/DashBoard/show_feedback?type=${type}&HotelId=${hotelId}`;
+            const apiUrl2 = `http://egyvoyage2.somee.com/api/Hotel?id=${hotelId}`;
+
+            // Fetch hotel feedback based on hotelId and type
+            const response = await axios.get(apiUrl);
+            const feedbacks = response.data;
+            // Fetch hotel feedback based on hotelId and type
+            const hotel = await axios.get(apiUrl2);
+            const feedbacks2 = response.data;
+
+            const feedbackTable = document.getElementById('feedbackTable');
+            const tbody = feedbackTable.querySelector('tbody');
+
+            feedbacks.forEach(feedback => {
+        // Loop through all entries in the 'data' array for each feedback
+        feedback.data.forEach(dataEntry => {
+            const feedbackRow = document.createElement('li');
+            feedbackRow.classList.add('table-row');
+            feedbackRow.innerHTML = `
+                <div class="col col-2" data-label="User Name">${dataEntry.name}</div>
+                <div class="col col-3" data-label="Rating">${dataEntry.rating}</div>
+                <div class="col col-4" data-label="Description">${dataEntry.description}</div>
+            `;
+            feedbackTable.appendChild(feedbackRow);
+        });
+    });
+
+            // Set hotel name, image, and rating
+            const hotelName = document.getElementById('hotelName');
+            const hotelImage = document.getElementById('hotelImage');
+            const hotelRating = document.getElementById('hotelRating');
+
+            hotelName.textContent = feedbacks2[0].name;
+            hotelImage.src = `http://egyvoyage2.somee.com/Resources/${feedbacks[0].image[0]}`; // Assuming the first image is used
+            hotelImage.alt = feedbacks2[0].name; // Set alt text to hotel name
+            hotelRating.textContent = `Rating: ${feedbacks2[0].rating}`; // Set rating text
+
+        } catch (error) {
+            console.error('Error fetching feedback:', error);
+        }
+    }
+
+    // Call the function to fetch and display feedback
+    getHotelFeedback();
+</script>
+
+</body>
+</html>

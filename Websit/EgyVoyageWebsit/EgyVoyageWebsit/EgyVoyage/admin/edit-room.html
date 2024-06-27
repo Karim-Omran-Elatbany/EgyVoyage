@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgyVoyage</title>
+    <link rel="stylesheet" href="/admin/css/all.min.css">
+    <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="7admin/css/home.css">
+    <link rel="stylesheet" href="/admin/css/register.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+        <style>
+            #edit{
+                /* width: 10%; */
+                letter-spacing: 0;
+                background: #409422;
+                transition: 0.5s;
+                margin-bottom: 20px;
+            }
+            #edit:hover{
+                letter-spacing: 1px;
+                background: #2a7210;
+            }
+        </style>
+</head>
+
+
+
+<!-- <nav class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link p-3 " aria-current="page" href="add-hotel.html">Add Hotel</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-3 " href="/admin/add-room.html">Add Room</a>
+            </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link p-3 " href="all-hotels.html">All Hotels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-3 " href="all-places.html">All Places</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-3 " href="add-place.html">Add Place</a>
+            </li>
+        </ul>
+    </div>
+</nav>  -->
+
+
+<!-- Alart -->
+<div style="width: 40%; margin-left:30%;" id="alert"></div>
+
+<div class="main-register pt-5 pb-5">
+    <div class="conatiner">
+        <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+            <h1 class="fw-bold">Edit Room</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="reigster addHotel addRoom fs-6">
+    <div class="overlay"></div>
+    <div class="container">
+        <form id="editroomForm" action="#">
+            <div class="row pt-5 pb-5 mt-5">
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="nameOfRoom">Name*</label>
+                    <input type="text" id="nameOfRoom" name="nameOfRoom" required>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="priceOfRoom">Price*</label>
+                    <input type="text" id="priceOfRoom" name="priceOfRoom" required>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="categoryOfRoom">Category*</label>
+                    <input type="text" id="categoryOfRoom" name="categoryOfRoom" required>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="guestOfRoom">Max Guests*</label>
+                    <input type="text" id="guestOfRoom" name="guestOfRoom" required>
+                </div>            
+                <div class="col-lg-6 d-flex flex-column">
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option1" id="checkbox1"> Brakfast
+                    </label>
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option1" id="checkbox2" > Smooking
+                    </label>
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option1" id="checkbox3"> Free Wifi
+                    </label>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="imgOfRoom">Select image :</label>
+                    <input type="file" id="imgOfRoom" name="imgOfRoom" accept="image/*" required>
+                </div>
+                <div class="add-button text-center pt-5 d-flex align-items-center justify-content-center">
+                    <input class="me-5" type="submit"  id="edit">
+                    <!-- <a id="a" href="/admin/all-hotels.html">Show All Hotels</a> -->
+                </div>
+            </div>
+        </form>
+        <div class="exist text-center">
+    </div>
+</div>
+</div>
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="js/add-room.js"></script>
+<script src="js/edit-room.js"></script>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/admin/css/all.min.css">
+  <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+  <link rel="stylesheet" href="7admin/css/home.css">
+  <link rel="stylesheet" href="/admin/css/register.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+  <link href='https://fonts.googleapis.com/css?family=Bungee Spice' rel='stylesheet'>
+</head>
+
+
+<!-- Success and Error Alert -->
+<div id="alert" style="width: 40%; margin-left: 30%;"></div>
+
+<!-- Start Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link p-3 " aria-current="page" href="add-hotel.html">Add Hotel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="all-hotels.html">All Hotels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 active " href="all-places.html">All Places</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="add-place.html">Add Place</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="Analyze.html">Hotel Analytics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="/admin/Hotel Analyze.html">Feedback Analytics</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- End Navbar -->
+
+
+<div class="all-hotels pt-5">
+  <div class="container">
+    <div class="row">
+        <!-- <div onclick="addRoom()" class="col-sm-12 col-md-6 col-lg-4 pt-4"> -->
+          <!-- <div class="box mb-5">
+            <img class="img-fluid" src="/imgs/tour-1.jpg" alt="">
+            <div class="text p-5">
+              <h4 class="fw-bold fs-6 mb-3">Nasr City - Al Masa Hotel</h4>
+              <div class="rate mb-3">
+                <i class="filled fas fa-star"></i>
+                <i class="filled fas fa-star"></i>
+                <i class="filled fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span class="start">1 Night</span>
+              <p class="mt-3">From <Span> $100</Span></p>
+              <a href="/admin/edit-hotel.html"><button type="button" class="btn btn-primary px-4">Edit</button></a>
+              <button type="button" class="btn btn-danger px-4 ms-4">Delete</button>
+            </div>
+          </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/all.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="/admin/js/edit-place.js"></script>
+<script src="/admin/js/show-place.js"></script>
+<script src="/admin/js/add-place.js"></script>
+<script src="/admin/js/delete-place.js"></script>
+
+</body>
+</html>

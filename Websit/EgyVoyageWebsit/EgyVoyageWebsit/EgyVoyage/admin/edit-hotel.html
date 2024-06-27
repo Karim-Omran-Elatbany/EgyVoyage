@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/admin/css/all.min.css">
+  <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+  <link rel="stylesheet" href="7admin/css/home.css">
+  <link rel="stylesheet" href="/admin/css/register.css">
+  <link rel="stylesheet" href="/admin/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <style>
+        #addBtn{
+            /* width: 10%; */
+            letter-spacing: 0;
+            background: #409422;
+            transition: 0.5s;
+            margin-bottom: 20px;
+        }
+        #addBtn:hover{
+            letter-spacing: 1px;
+            background: #2a7210; 
+        }
+        #a{
+            margin-left: 3%;
+            margin-top: 17px;
+            letter-spacing: 0;
+            background: rgb(63, 158, 213);
+            transition: 0.5s;
+            margin-bottom: 20px;
+        }
+        #a:hover{
+            letter-spacing: 1px;
+            background: rgb(34, 123, 174);
+        }
+    </style>
+</head>
+
+
+
+
+
+<div style="width: 40%; margin-left:30%;" id="alert"></div>
+<div class="main-register pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold">Edit Hotel</h1>
+    </div>
+  </div>
+</div>
+
+<div class="reigster fs-6">
+  <div class="container">
+    <form id="edithotelForm" action="#">
+      <div class="row pt-5 pb-5 mt-5">
+        <div class="col-lg-12 d-flex flex-column">
+          <label for="nameOfHotel">Name*</label>
+          <input class="one" type="text" id="nameOfHotel" name="nameOfHotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="descOfHotel">Description*</label>
+          <input type="text" id="descOfHotel" name="descOfHotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="locationOfhotel">Location*</label>
+          <input type="text" id="locationOfhotel" name="locationOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="ratingOfhotel">Rating*</label>
+          <input type="text" id="ratingOfhotel" name="ratingOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="cordinateOfhotel">Cordinate*</label>
+          <input type="text" id="cordinateOfhotel" name="cordinateOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="cordinateOfhotel">Map Location*</label>
+          <input type="text" id="mapOfhotel" name="mapOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="firstOfhotel">First Day Trip*</label>
+          <input type="text" id="firstOfhotel" name="firstOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="secondOfhotel">Second Day Trip*</label>
+          <input type="text" id="secondOfhotel" name="secondOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="thirdOfhotel">Third Day Trip*</label>
+          <input type="text" id="thirdOfhotel" name="thirdOfhotel" required>
+        </div>
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="img">Select image :</label>
+          <input type="file" id="img" name="img" accept="image/*" required>
+        </div>
+        <div class="add-button text-center pt-5 d-flex align-items-center justify-content-center">
+          <input class="update" type="submit" id="addBtn" value="update">
+          <a id="a" href="/admin/all-hotels.html">Show All Hotels</a>
+        </div>
+        </div>
+    </form>
+    <div class="exist text-center my-5">
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/all.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="/admin/js/edit-hotel.js"></script>
+
+<body>
+</body>
+</html>

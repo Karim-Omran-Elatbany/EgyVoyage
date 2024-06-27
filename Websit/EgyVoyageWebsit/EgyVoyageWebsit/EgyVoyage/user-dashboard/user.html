@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EgyVoyage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/user-dashboard/user.css">
+  <link rel="stylesheet" href="/css/all-hotels.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+  <style>
+    .row.content {
+      height: 700px
+    }
+
+    .sidenav {
+      height: 100%;
+    }
+
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+
+      .row.content {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+
+
+<!-- Start Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#"><img src="/imgs/logo.png" class="" alt=""></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link p-3 active" aria-current="page" href="/index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/destination.html">Destination</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3 " href="/all-hotels.html">Our Hotels</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- End Navbar -->
+
+
+
+
+
+<!-- Start Dashboard -->
+<div class="main-tour pt-5 pb-5">
+  <div class="conatiner">
+    <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+      <h1 class="fw-bold pb-5">Dashboard</h1>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav p-4">
+      <h4 class="py-4">My Account</h4>
+      <ul class="nav nav-pills nav-stacked d-flex flex-column">
+        <li class="active"><a href="#"><i class="fa-solid me-2 fa-tv"></i>Dashboard</a></li>
+        <li><a href="/user-dashboard/edit-profile.html"><i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile</a>
+        </li>
+        <li><a href="/user-dashboard/change-password.html"><i class="fa-solid fa-user-lock me-2"></i> Change
+            Passowrd</a></li>
+      </ul><br>
+      <h4 class="py-4">Hotels Booking</h4>
+      <ul class="nav nav-pills nav-stacked d-flex flex-column">
+        <li><a href="/user-dashboard/booking.html"><i class="fa-solid fa-file me-2"></i>My Booking</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-9">
+      <div class="profile">
+        <div class="edit-profile d-flex justify-content-between align-items-center">
+          <h2>My Profile</h2>
+          <a href="/user-dashboard/edit-profile.html">Edit Profile</a>
+        </div>
+        <br>
+        <!-- <div class="profile-details ms-5">
+          <div class="profile-name"><span>Name</span><span class="ms-5" id="profileName">amr sakr </span></div>
+          <div class="profile-name"><span>Birth Date</span><span class="ms-5" id="profileName">April 21, 2002</span></div>
+          <div class="profile-name"><span>Email</span><span class="ms-5" id="profileName">amrsakr2024@gmail.com
+          </span></div>
+          <div class="profile-name"><span>Contact</span><span class="ms-5" id="profileName">Amr Sakr</span></div>
+          <div class="profile-name"><span>Gender</span><span class="ms-5" id="profileName">Amr Sakr</span></div>
+          <div class="profile-name"><span>Country</span><span class="ms-5" id="profileName">Amr Sakr</span></div>
+          <div class="profile-name"><span>Phone</span><span class="ms-5" id="profileName">Amr Sakr</span></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  function userDetails() {
+
+    let lname = localStorage.getItem("lname")
+    let fname = localStorage.getItem("fname")
+    let birthdate = localStorage.getItem("birthdate")
+    let email = localStorage.getItem("email")
+    let pass = localStorage.getItem("password")
+    let gender = localStorage.getItem("gender")
+    let country = localStorage.getItem("country")
+    let phone = localStorage.getItem("phone")
+
+    var name = fname.concat(" ").concat(lname);
+    let date = birthdate.substr(0, 10)
+
+    let content = `
+        <div class="profile-details ms-5">
+          <div class="profile-name"><span>Name</span><span class="ms-5" id="profileName">${name}</span></div>
+          <div class="profile-name"><span>Birth Date</span><span class="ms-5" id="profileName">${date}</span></div>
+          <div class="profile-name"><span>Email</span><span class="ms-5" id="profileName">${email}
+          </span></div>
+          <div class="profile-name"><span>Password</span><span class="ms-5" id="profileName">${pass}</span></div>
+          <div class="profile-name"><span>Gender</span><span class="ms-5" id="profileName">${gender}</span></div>
+          <div class="profile-name"><span>Country</span><span class="ms-5" id="profileName">${country}</span></div>
+          <div class="profile-name"><span>Phone</span><span class="ms-5" id="profileName">${phone}</span></div>
+        </div> `
+    document.querySelector(".profile").innerHTML += content;
+  }
+  userDetails()
+
+
+
+
+
+
+  function setupUI() {
+    const response = localStorage.getItem("response")
+    const code = localStorage.getItem("code")
+    const email = localStorage.getItem("email")
+    let login = document.getElementById("lgn")
+    if (email != null || code != null) {
+      login.style.visibility = "hidden"
+      document.querySelector(".user-name").style.display = "block"
+      let lname = localStorage.getItem("lname");
+      let fname = localStorage.getItem("fname");
+      var name = fname.concat(" ").concat(lname);
+      let userNameText = document.getElementById("user-name-text");
+      userNameText.textContent = name;
+    }
+    else {
+      login.style.visibility = "visible"
+      document.querySelector(".user-name").style.display = "none"
+
+    }
+  }
+  setupUI()
+
+
+  logout
+  let signoutBtn = document.getElementById("signout")
+  let login = document.getElementById("lgn")
+  signoutBtn.addEventListener("click", function (event) {
+    event.preventDefault
+    localStorage.clear()
+    login.style.visibility = "visible"
+  })
+  setupUI()
+
+
+
+
+</script>
+
+<script src="/js/searched-hotels.js"></script>
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<body>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+</head>
+<body>
+
+
+<div style="width: 30%; margin-left:35%; font-size: 17px;" id="success-Alart"></div>
+<div style="width: 30%; margin-left:35%; font-size: 17px;" id="fail-Alart"></div>
+
+<div class="main"> -->
+    <!-- Sing in  Form -->
+    <!-- <section class="sign-in">
+        <div class="containeer">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="/admin/imgs/img-1.png" alt="sing up image"></figure>
+                </div>
+                <div class="signin-form">
+                    <h2 class="form-title">Log in</h2>
+                    <form method="POST" class="register-form" id="login-form">
+                        <div class="form-group">
+                            <label for="your_name"><i class="fa-solid fa-user"></i></label>
+                            <input type="email" name="your_name" id="your_email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                        </div>
+                        <div class="form-group-last">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                        </div>
+                        <div class="form-group form-button">
+                            <button id="login" type="button" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<script>
+        const signinBtn= document.getElementById('login');
+    signinBtn.addEventListener('click', function(event) {
+        event.preventDefault()
+        let Email = document.getElementById('your_email').value
+        let password = document.getElementById('your_pass').value
+    
+        if (Email == '' && password == ''){
+            showFailAlert("Enter Data")
+        }else if (Email == ''){
+            showFailAlert("Enter your Email")
+        }
+        else if(password == ''){
+            showFailAlert("Enter password ")
+        }
+        else{
+            axios.post('http://egyvoyage.somee.com/api/Admin/LoginAdmin', 
+            JSON.stringify( 
+                {
+                    "email": Email,
+                    "password": password,
+                }
+            )
+            ,{
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then((res) =>
+            {
+                console.log(res)
+                showSuccessAlert("Logged in Successfully")
+                window.location = "all-hotels.html"  
+                
+            }).catch(error =>{
+                console.log(error)
+                showFailAlert("Admin not found")
+            })
+        }
+    })
+
+    function showSuccessAlert(alart){
+        const alertPlaceholder = document.getElementById('success-Alart')
+        const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `  <div>${message}</div>`,
+            '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+    }
+    appendAlert(alart, 'success')       
+    }
+
+
+    function showFailAlert(alart){
+        const alertPlaceholder = document.getElementById('fail-Alart')
+        const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `  <div>${message}</div>`,
+            '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+        ].join('')
+    
+        alertPlaceholder.append(wrapper)
+    }
+    appendAlert(alart, 'danger')       
+    }
+</script>
+
+<script src="/js/all.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script> -->
+<!-- <script src="/admin/js/login.js"></script> -->
+<!-- </body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <style>
+        .form-group {
+            position: relative;
+        }
+        .form-group input:invalid + .validation-message::after {
+            content: "Please fill this field";
+            color: red;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            font-size: 12px;
+        }
+        #login{
+            background: #227cd5; ;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        #login:hover{
+            letter-spacing: 1px;
+            background: #2167d7;  
+        }
+    </style>
+</head>
+<body>
+
+
+    
+
+<div class="main">
+    <!-- Sign in  Form -->
+    <section class="sign-in">
+        <div style="width: 40%; margin-left:30%; font-size: 17px;" id="alart"></div>
+        <div class="containeer">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="/admin/imgs/img-1.png" alt="sign up image"></figure>
+                </div>
+                <div class="signin-form">
+                    <h2 class="form-title">Log in</h2>
+                    <form method="POST" class="register-form" id="login-form">
+                        <div class="form-group">
+                            <label for="your_email"><i class="fa-solid fa-user"></i></label>
+                            <input style="width: 220px;" type="email" name="your_name" id="your_email" placeholder="Your Email" required/>
+                            <span class="validation-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="fa-solid fa-lock"></i></label>
+                            <input style="width: 220px;" type="password" name="your_pass" id="your_pass" placeholder="Password" required/>
+                            <span class="validation-message"></span>
+                        </div>
+                        <div class="form-group-last">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                        </div>
+                        <div class="form-group form-button">
+                            <button id="login" type="button" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/js/all.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="/admin/js/login.js"></script>
+
+
+</body>
+</html>
+

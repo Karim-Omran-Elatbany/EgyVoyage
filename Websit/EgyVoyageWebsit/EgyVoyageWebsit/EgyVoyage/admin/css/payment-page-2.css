@@ -1,0 +1,67 @@
+.wait,
+.line ul .wait::after {
+  color: #777;
+  border-color: #777;
+}
+
+.part-one form input {
+  margin: 0 20px 30px;
+}
+.part-one form {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    padding: 30px 30px 10px 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+.part-one form span{
+  color: deepskyblue;
+}
+.part-one .get-detail {
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  background-color: white;
+  padding: 30px 30px 10px 30px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.part-one .get-detail h3 {
+  font-size: 25px;
+  font-family: var(--primary-font);
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.payment-option h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.ch input {
+  margin-top: -18px;
+}
+.cash-method {
+  margin-top: 30px;
+  width: 100%;
+}
+.cash-method select {
+  width: 100%;
+  padding: 20px 10px;
+  border: none;
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+}
+.cash-method select:focus {
+  outline: none;
+}
+.pay {
+  margin-top: 30px;
+  width: 100%;
+}
+.pay button{
+  border: none;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #0754b0;
+  color: white;
+  letter-spacing: 3px;
+  font-size: 12px;
+}

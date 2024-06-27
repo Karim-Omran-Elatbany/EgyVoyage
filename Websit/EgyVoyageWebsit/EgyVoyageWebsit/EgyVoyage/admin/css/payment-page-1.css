@@ -1,0 +1,175 @@
+.main-payment {
+  font-family: var(--primary-font);
+  background-color: rgb(225 225 225 / 33%);
+}
+
+/* Start Line */
+.line ul {
+  position: relative;
+}
+.line ul::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #777;
+  width: 100%;
+  bottom: 0;
+  left: 39px;
+  z-index: -2;
+}
+.line ul li {
+  margin-bottom: 30px;
+  position: relative;
+}
+.line ul li::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 50%;
+  left: 50%;
+  bottom: -37px;
+  transform: translateX(-50%);
+}
+.wait,
+.line ul .wait::after {
+  color: #777;
+  border-color: #777;
+}
+/* End Line */
+
+
+/* Start Contact Detail */
+/* Part-1 */
+.contact-detail .part-1 form {
+  width: 100%;
+}
+.contact-detail .part-1 form h2{
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+.contact-detail .part-1 input {
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  width: 80%;
+}
+.contact-detail .part-1 input:focus {
+  outline: none;
+}
+.reigster .date-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-detail .part-1  select{
+  padding: 10px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 46px;
+  width: 80%;
+}
+.contact-detail .part-1 select:focus,
+.contact-detail .part-1 textarea {
+  outline: none;
+}
+.contact-detail .part-1 textarea {
+  margin-top: 15px;
+  width: 80%;
+  height: 200px;
+  border: 1px solid #eee;
+}
+/* Part-2  */
+.contact-detail .part-2  {
+  width: 100%;
+  margin-left: 60px;
+}
+@media (max-width: 991px) {
+  .contact-detail .part-2  {
+    margin-left: 0;
+  }
+}
+.contact-detail .part-2  h2{
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.contact-detail .part-2 .travel-info {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+}
+.contact-detail .part-2 .travel-info a{
+  text-decoration: none;
+}
+.contact-detail .part-2 .travel-info p{
+  margin-bottom: 30px;
+}
+.contact-detail .part-2 .price-breakdown div{
+  display: flex;
+  justify-content: space-between;
+}
+.contact-detail .part-2 .price-breakdown h2{
+  font-size: 16px;
+}
+.contact-detail .part-2 .price-breakdown .total{
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+.contact-detail .part-2 .price-breakdown div:nth-child(4){
+  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
+}
+.contact-detail .part-2 .price-breakdown h2 span{
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+.coupon-code {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.coupon-code input {
+  width: 100px;
+  border: 1px solid #eee;
+}
+.coupon-code button {
+  background-color: transparent;
+  border: none;
+}
+.coupon-code label {
+  margin-right: 150px;
+}
+.contact-detail .part-2 .price-breakdown div:last-child{
+  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
+}
+
+.payment-options {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+.payment-options button{
+  background-color: transparent;
+  border: none;
+  margin-right: 30px;
+  color: cornflowerblue;
+  font-size: 15px;
+  font-weight: bold;
+}
+.next-step  {
+  padding: 30px 0;
+}
+.next-step button {
+  padding: 15px 20px;
+  border: none;
+  color: white;
+  background-color: cornflowerblue;
+  border-radius: 6px;
+  font-size: 15px;
+}
+/* End Contact Detail */

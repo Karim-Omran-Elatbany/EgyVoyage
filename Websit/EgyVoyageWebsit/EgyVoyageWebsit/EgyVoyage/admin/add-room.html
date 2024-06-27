@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgyVoyage</title>
+    <link rel="stylesheet" href="/admin/css/all.min.css">
+    <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="7admin/css/home.css">
+    <link rel="stylesheet" href="/admin/css/register.css">
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <style>
+        #add-room-btn{
+            letter-spacing: 0;
+            background: #409422;
+            transition: 0.5s;
+        }
+        #add-room-btn:hover{
+            letter-spacing: 1px;
+            background: #2a7210;  
+        }
+    
+    </style>
+</head>
+
+<!-- Success and Error Alert -->
+<div id="alert" style="width: 40%; margin-left: 30%;"></div>
+
+<div class="main-register pt-5 pb-5">
+    <div class="conatiner">
+        <div class="mt-4 d-flex justify-content-center align-items-center flex-column">
+            <h1 class="fw-bold">Add Room</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="reigster addHotel addRoom fs-6">
+    <div class="overlay"></div>
+    <div class="container">
+        <form id="addRoomForm" action="#">
+            <div class="row pt-5 pb-5 mt-5">
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="nameOfRoom">Name*</label>
+                    <input type="text" id="nameOfRoom" name="nameOfRoom" required>
+                    <div class="validation-message"></div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="priceOfRoom">Price*</label>
+                    <input type="text" id="priceOfRoom" name="priceOfRoom" required>
+                    <div class="validation-message"></div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="categoryOfRoom">Category*</label>
+                    <input type="text" id="categoryOfRoom" name="categoryOfRoom" required>
+                    <div class="validation-message"></div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="guestOfRoom">Max Guests*</label>
+                    <input type="text" id="guestOfRoom" name="guestOfRoom" required>
+                    <div class="validation-message"></div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option1" id="checkbox1"> Brakfast
+                    </label>
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option1" id="checkbox2" > Smooking
+                    </label>
+                    <label class="d-flex align-items-center">
+                        <input class="me-2" type="checkbox" name="option" id="checkbox3"> Free Wifi
+                    </label>
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                    <label for="imgOfRoom">Select image :</label>
+                    <input type="file" id="imgOfRoom" name="imgOfRoom" accept="image/*" required>
+                    <div class="validation-message"></div>
+                </div>
+                <div class="add-button text-center pt-5 d-flex align-items-center justify-content-center">
+                    <input class="me-5" type="submit" id="add-room-btn">
+                    <!-- <a href="/admin/all-hotels.html">Show All Hotels</a> -->
+                </div>
+            </div>
+        </form>
+        <div class="exist text-center">
+    </div>
+</div>
+</div>
+<script src="/js/all.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/egyVoyage.js"></script>
+<script src="js/add-room.js"></script>
+
+
+
+
+<body>
+
+</body>
+</html>
