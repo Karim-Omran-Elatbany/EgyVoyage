@@ -1,4 +1,4 @@
-# EgyVoyage 
+#  👋 Welcome! EgyVoyage 
 بسم الله الرحمن الرحيم
 
 { "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ * خَلَقَ الْإِنْسَانَ مِنْ عَلَقٍ * اقْرَأْ وَرَبُّكَ الْأَكْرَمُ * الَّذِي عَلَّمَ بِالْقَلَمِ * عَلَّمَ الْإِنْسَانَ مَا لَمْ يَعْلَمْ" } [العلق: 1-5]
@@ -23,7 +23,9 @@ The project consists of a web program and a mobile program
 
 I extend my sincere thanks to my distinguished team who made unparalleled efforts to complete this project to the highest standard:
 
-Web team:
+# Our Team
+
+**🌐Web team**:
 
 Amr Saeed Saqr Front End
 
@@ -31,13 +33,13 @@ Manar Mahmoud Front End
 
 Karem Emad Back End
 
-AI Team:
+**🤖AI Team**:
 
 Karim Omran
 
 Sameh Harara
 
-Mobile App:
+**📱Mobile App**:
 
 Mohamed Harb
 
@@ -46,7 +48,7 @@ Abdulhamid Halawa
 Hager Mohamed
 
 
-You can view the project through the following link: [EgyVoyage]
+# You can view the project through the following link: [EgyVoyage]
 
 link Video Demo Admin Website
 https://youtu.be/xlY1zplORgU
