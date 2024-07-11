@@ -7,7 +7,7 @@
 
 About the project:
 
-Egy Boyage is an application that aims to improve the tourism experience in Egypt. It provides tourists with a complete and comprehensive trip, with rich information about tourist places in Egypt, hotel reservations, and more.
+Egy Voyage is an application that aims to improve the tourism experience in Egypt. It provides tourists with a complete and comprehensive trip, with rich information about tourist places in Egypt, hotel reservations, and more.
 
 Project features:
 
